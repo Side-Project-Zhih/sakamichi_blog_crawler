@@ -6,7 +6,7 @@ interface Iapi {
       fromDate,
       timeStatus,
     }: {
-      count: number;
+      count: string;
       fromDate: string;
       timeStatus: string;
     }

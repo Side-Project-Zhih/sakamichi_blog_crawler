@@ -7,13 +7,15 @@ class SakuraApi implements Iapi {
       count,
       fromDate,
       timeStatus,
+      mode,
     }: {
-      count: number;
+      count: string;
       fromDate: string;
       timeStatus: string;
+      mode: string;
     }
   ) {
-    return `${this._blogApi}?cd=blog&get=B&${memberId}&getnum=${count}&fromdate=${fromDate}&timestatus=${timeStatus}`;
+    return `${this._blogApi}?cd=blog&get=${mode}&${memberId}&getnum=${count}&fromdate=${fromDate}&timestatus=${timeStatus}`;
   }
 }
 

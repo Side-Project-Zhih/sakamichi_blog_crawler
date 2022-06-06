@@ -18,10 +18,9 @@ interface IgroupFactory {
   api: Iapi;
   getBlogs(
     memberId: string,
-    { count, fromDate }: { count: number; fromDate: string; timeStatus: string }
+    { count, fromDate }: { count: string; fromDate: string; timeStatus: string }
   ): Promise<blog[]>;
-  // getMember(memberId: string): member;
-  // downloadImages(): void;
+  getBlogsTotalCount(memberId: string, fromDate: string): Promise<string>;
   newInstance(groupName: string): IgroupFactory;
 }
 

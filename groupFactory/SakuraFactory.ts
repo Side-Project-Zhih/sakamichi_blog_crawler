@@ -9,6 +9,7 @@ type responseBlog = {
 };
 
 class SakuraFactory implements IgroupFactory {
+  private groupName: string = "sakura";
   public api = new SakuraApi();
   newInstance(): IgroupFactory {
     return new SakuraFactory();
@@ -20,12 +21,13 @@ class SakuraFactory implements IgroupFactory {
       count,
       fromDate,
       timeStatus,
-    }: { count: number; fromDate: string; timeStatus: string }
+    }: { count: string; fromDate: string; timeStatus: string }
   ): Promise<blog[]> {
     const api = this.api.GET_BLOGS_API(memberId, {
       count,
       fromDate,
       timeStatus,
+      mode: "B",
     });
     const res: AxiosResponse = await axios.get(api);
     const data: { blog: responseBlog[] } = res.data;
@@ -34,7 +36,7 @@ class SakuraFactory implements IgroupFactory {
 
     for (const blog of blogs) {
       const { title, content, creator } = blog;
-      const dir = creator;
+      const dir = `${this.groupName}/${creator}`;
       const date = blog.pubdate.replace(/[/: ]/g, "");
 
       const document = new JSDOM(content).window.document;
@@ -65,6 +67,18 @@ class SakuraFactory implements IgroupFactory {
     }
 
     return output;
+  }
+  async getBlogsTotalCount(memberId: string, fromDate: string) {
+    const api = this.api.GET_BLOGS_API(memberId, {
+      count: '1',
+      fromDate,
+      timeStatus: "old",
+      mode: "C",
+    });
+    const res: AxiosResponse = await axios.get(api);
+    const data: responseBlog = res.data;
+    const count: string = data.count;
+    return count;
   }
 }
 
