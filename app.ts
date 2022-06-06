@@ -1,5 +1,8 @@
-import yargs from "yargs";
+import yargs, { string } from "yargs";
 import mkdirp from "mkdirp";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
 // import mongodb, { MongoClient, Db, ObjectId } from "mongodb";
 import { SakuraFactory } from "./groupFactory/SakuraFactory";
 import { Mongodb, MongoMember } from "./util/database";
@@ -30,6 +33,7 @@ const args = yargs.options(COMMANDS).help().argv as {
   members: Array<string>;
   showSakuraMember: boolean;
 };
+dayjs.extend(utc);
 
 async function main() {
   const { db } = await init();
@@ -51,17 +55,27 @@ async function main() {
   const members = args.members;
 
   // query member
-  const memberList = await db.getMemberList(members);
-  const count = 1000;
-  const now: string = "";
+  const memberList = await db.getMemberList(members, groupName);
+  let count = "1000";
+  const now: string = dayjs.utc(new Date()).utcOffset(9).format('YYYYMMDDHHmmss');
 
   for (const memberId of members) {
     const member = memberList.find(
       (item) => item._id.toString() === memberId
     ) as member;
 
-    const fromDate: string = member ? member.date : "";
-    const timeStatus: string = member ? "old" : "new";
+    const isFirstTime = member.date === undefined;
+    let fromDate = member.date;
+    let timeStatus: string = "new";
+
+    if (isFirstTime) {
+      await mkdirp(`${process.cwd()}/public/${groupName}/${member.name}`);
+      fromDate = now;
+      timeStatus = "old";
+      count = await group.getBlogsTotalCount(memberId, now);
+    }
+
+    fromDate = fromDate as string;
 
     const blogs = await group.getBlogs(memberId, {
       count,
@@ -69,7 +83,7 @@ async function main() {
       fromDate,
     });
     //store content in db
-    await db.bulkInsertBlog(memberId, blogs);
+    await db.bulkInsertBlog(memberId, groupName, blogs);
 
     //downloadImages
     const blogRunList = blogs.map(async (blog) => {
@@ -81,7 +95,7 @@ async function main() {
     await Promise.allSettled(blogRunList);
 
     //udpate member last updated
-    await db.updateMember(memberId, {
+    await db.updateMember(memberId, groupName, {
       date: now,
     });
 
@@ -96,5 +110,12 @@ async function init() {
     "SakaBlog"
   );
   await db.connectClient();
+  
+  const isInitMemberListExist:boolean = await db.checkMemberListExist();
+  if (!isInitMemberListExist){
+    await db.createInitMemberList()
+  }
+
+
   return { db };
 }
