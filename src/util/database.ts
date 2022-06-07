@@ -72,6 +72,7 @@ class Mongodb implements Idb {
           content: blog.content,
           title: blog.title,
           date: blog.date,
+          images: blog.images
         },
       },
     }));
@@ -236,7 +237,9 @@ class Mongodb implements Idb {
     if (this.db === undefined) {
       throw new Error();
     }
-    const member = this.db.collection("Member").findOne({ group: "sakura" });
+    const member = await this.db
+      .collection("Member")
+      .findOne({ group: "sakura" });
     return member !== null;
   }
 }

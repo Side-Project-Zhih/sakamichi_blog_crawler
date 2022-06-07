@@ -20,6 +20,7 @@ const COMMANDS = {
     alias: "m",
     describe: "input member id",
     array: true,
+    string: true,
   },
   showSakuraMember: {
     alias: "s",
@@ -84,19 +85,25 @@ async function main() {
     // query member
     const memberList = await db.getMemberList(members, groupName);
     let count = "1000";
-    const now: string = dayjs
-      .utc(new Date())
-      .utcOffset(9)
-      .format("YYYYMMDDHHmmss");
+    const now: string = "20220513000000";
+    //  dayjs
+    //   .utc(new Date())
+    //   .utcOffset(9)
+    //   .format("YYYYMMDDHHmmss");
 
     for (const memberId of members) {
       const member = memberList.find(
-        (item) => item._id.toString() === memberId
+        (item) => item.memberId === memberId
       ) as member;
 
+      const eventName: string = `finish ${member.name} download`;
       const isFirstTime = member.date === undefined;
       let fromDate = member.date;
       let timeStatus: string = "new";
+
+      /** time count start */
+      console.time(eventName);
+      /** ----------------- */
 
       if (isFirstTime) {
         await mkdirp(`${process.cwd()}/public/${groupName}/${member.name}`);
@@ -112,24 +119,34 @@ async function main() {
         timeStatus,
         fromDate,
       });
+
+      if (blogs.length === 0) {
+        return console.log("Already updated  latest blog");
+      }
+
       //store content in db
       await db.bulkInsertBlog(memberId, groupName, blogs);
 
       //downloadImages
       const blogRunList = blogs.map(async (blog) => {
         const images = blog.images;
-        const imageRunList = images.map(async (image) => downloadImage(image));
-        return Promise.allSettled(imageRunList);
+        const imageRunList = images.map(
+          async (image) => await downloadImage(image)
+        );
+        return await Promise.allSettled(imageRunList);
       });
 
-      await Promise.allSettled(blogRunList);
+      const test = await Promise.allSettled(blogRunList);
 
       //udpate member last updated
       await db.updateMember(memberId, groupName, {
         date: now,
       });
 
-      console.log(`finish ${member.name} download`);
+      /** time count end */
+      console.timeEnd(eventName);
+      /** ----------------- */
+      process.exit()
     }
   } catch (error) {
     throw new Error(JSON.stringify(error));

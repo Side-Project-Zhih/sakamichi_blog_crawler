@@ -15,7 +15,7 @@ class SakuraApi implements Iapi {
       mode: string;
     }
   ) {
-    return `${this._blogApi}?cd=blog&get=${mode}&${memberId}&getnum=${count}&fromdate=${fromDate}&timestatus=${timeStatus}`;
+    return `${this._blogApi}?cd=blog&get=${mode}&member_id=${memberId}&getnum=${count}&fromdate=${fromDate}&timestatus=${timeStatus}`;
   }
 }
 

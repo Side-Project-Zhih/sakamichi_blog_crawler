@@ -48,7 +48,7 @@ class SakuraFactory implements IgroupFactory {
 
       for (let i = 0; i < pics.length; i++) {
         const pic = pics[i];
-        const filename = `${dir}/${date}_image_${i}.jpg`;
+        const filename = `${date}_image_${i}.jpg`;
         const src = pic.src;
         pic.src = filename;
         images.push({

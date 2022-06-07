@@ -11,8 +11,8 @@ type image = {
 export = {
   downloadImage: async function (info: image): Promise<void> {
     const { filename, src, dir } = info;
+    const path = `${process.cwd()}/public/${dir}/${filename}`;
     const res = await axios.get(src, { responseType: "stream" });
-    const path = `${process.cwd()}/public/${dir}/${filename}}`;
-    await pipeline(res.data, fs.createWriteStream(path));
+    return await pipeline(res.data, fs.createWriteStream(path));
   },
 };
