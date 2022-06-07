@@ -85,11 +85,10 @@ async function main() {
     // query member
     const memberList = await db.getMemberList(members, groupName);
     let count = "1000";
-    const now: string = "20220513000000";
-    //  dayjs
-    //   .utc(new Date())
-    //   .utcOffset(9)
-    //   .format("YYYYMMDDHHmmss");
+    const now: string = dayjs
+      .utc(new Date())
+      .utcOffset(9)
+      .format("YYYYMMDDHHmmss");
 
     for (const memberId of members) {
       const member = memberList.find(
@@ -146,7 +145,7 @@ async function main() {
       /** time count end */
       console.timeEnd(eventName);
       /** ----------------- */
-      process.exit()
+      process.exit();
     }
   } catch (error) {
     throw new Error(JSON.stringify(error));
