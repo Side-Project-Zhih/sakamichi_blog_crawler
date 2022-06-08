@@ -50,7 +50,7 @@ class SakuraFactory implements IgroupFactory {
         const pic = pics[i];
         const filename = `${date}_image_${i}.jpg`;
         const src = pic.src;
-        pic.src = filename;
+        pic.src = `/${dir}/${filename}`;
         images.push({
           filename,
           src,

@@ -1,0 +1,113 @@
+
+ <div class="contrainer">
+    <div class="col2-wrap-in2 wid1200">
+      <div class="col-l-wrap">
+
+        <article class="post">
+          <div class="col-l widfix-sp">
+            <div class="com-calendindinav">
+              <div class="wrap-bg">
+                <div class="inner">
+                  <div class="year-month">
+                    <div class="ym-inner wf-a">
+                      <div class="ym-txt">
+                        <span class="ym-year">{{year}}</span>
+                        <span class="ym-month">{{month}}</span>
+                      </div>
+                      <p class="date wf-a">{{day}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-r widfix-sp">
+            <div class="inner title-wrap">
+              <h1 class="title">{{title}}</h1>
+            </div>
+          </div>
+
+          <div class="col-l eigo-wrap pc">
+            <div class="eigo-inner">
+              <p class="eigo wf-a mt-3">{{name}}</p>
+            </div>
+          </div>
+          <div class="col-r">
+
+            <div class="box-article">
+              {{{content}}}
+
+            </div>
+
+            {{#if showFooter}}
+
+            <div class="blog-foot">
+              <div class="txt">
+                <p class="name">{{name}}</p>
+                <p class="date wf-a">{{date_time}}</p>
+              </div>
+            </div>
+            {{/if}}
+
+          </div>
+
+
+
+
+
+
+        </article>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="col-r">
+        <div class="blog-wdget-area">
+
+          <div class="brog-newentry-r">
+            <div class="com-title-ej">
+              <p class="part-eigo wf-a" style="margin-bottom: 30px;">BLOG SELECTOR</p>
+              <form action="http://localhost:3000/query" method="post" class="d-flex flex-column"   style="margin-bottom: 50px;">
+              <select name="memberId"class="mb-4">
+                    {{#each members}}
+                      <option  {{#if this.target}} selected{{/if}} value={{this.memberId}} >{{this.name}}</option>
+                    {{/each}}
+              
+              </select>
+              <input type="month" class="mb-4" name="date" id="date" value={{year_month}}>
+              <input type="hidden" name="group" value={{group}}>
+              <button id="query" type="submit" class="btn-light w-50 p-1">send</button>
+              </form>
+              <p class="mb-3">{{name}}</p>
+              <img class="img-fluid" src="/sakura/profile/{{name}}.jpg" alt="">
+            </div>
+            <ul class="com-blog-minipart">
+                {{#each blogs}}
+              <li class="box"><a class="w-100" href={{this.url}}>
+    
+                  <div class="txt">
+                    <div class="date-title w-100 d-flex justify-content-between">
+                      <h3 class="title">{{this.title}} </h3>
+                      <p>{{this.date}}</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+               {{/each}}
+            </ul>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>

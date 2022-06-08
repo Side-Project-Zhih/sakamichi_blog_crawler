@@ -5,6 +5,15 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "browser",
+      "program": "${workspaceFolder}/index.js",
+      // "request": "browser",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
       "type": "pwa-node",
       "request": "launch",
       "name": "blogCrawler",
