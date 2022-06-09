@@ -1,5 +1,6 @@
 import mongodb, { MongoClient, Db, ObjectId } from "mongodb";
 import { blog } from "../groupFactory/IGroupFactory";
+import axios, { AxiosResponse } from "axios";
 
 type MongoMember = {
   _id: ObjectId;
@@ -25,8 +26,7 @@ interface Idb {
     groupName: string,
     data: object
   ): Promise<void>;
-  createInitMemberList(): Promise<void>;
-  checkMemberListExist(): Promise<boolean>;
+  updateInitMemberList(group: string): Promise<void>;
 }
 
 class Mongodb implements Idb {
@@ -72,7 +72,7 @@ class Mongodb implements Idb {
           content: blog.content,
           title: blog.title,
           date: blog.date,
-          images: blog.images
+          images: blog.images,
         },
       },
     }));
@@ -102,145 +102,54 @@ class Mongodb implements Idb {
       }
     );
   }
-  async createInitMemberList() {
-    const data = [
-      {
-        name: "上村 莉菜",
-        group: "sakura",
-        memberId: "03",
-      },
-      {
-        name: "尾関 梨香",
-        group: "sakura",
-        memberId: "04",
-      },
-      {
-        name: "小池 美波",
-        group: "sakura",
-        memberId: "06",
-      },
-      {
-        name: "小林 由依",
-        group: "sakura",
-        memberId: "07",
-      },
-      {
-        name: "齋藤 冬優花",
-        group: "sakura",
-        memberId: "08",
-      },
-      {
-        name: "菅井 友香",
-        group: "sakura",
-        memberId: "11",
-      },
-      {
-        name: "土生 瑞穂",
-        group: "sakura",
-        memberId: "14",
-      },
-      {
-        name: "原田 葵",
-        group: "sakura",
-        memberId: "15",
-      },
-      {
-        name: "渡邉 理佐",
-        group: "sakura",
-        memberId: "21",
-      },
-      {
-        name: "井上 梨名",
-        group: "sakura",
-        memberId: "43",
-      },
-      {
-        name: "遠藤 光莉",
-        group: "sakura",
-        memberId: "53",
-      },
-      {
-        name: "大園 玲",
-        group: "sakura",
-        memberId: "54",
-      },
-      {
-        name: "大沼 晶保",
-        group: "sakura",
-        memberId: "55",
-      },
-      {
-        name: "幸阪 茉里乃",
-        group: "sakura",
-        memberId: "56",
-      },
-      {
-        name: "関 有美子",
-        group: "sakura",
-        memberId: "44",
-      },
-      {
-        name: "武元 唯衣",
-        group: "sakura",
-        memberId: "45",
-      },
-      {
-        name: "田村 保乃",
-        group: "sakura",
-        memberId: "46",
-      },
-      {
-        name: "藤吉 夏鈴",
-        group: "sakura",
-        memberId: "47",
-      },
-      {
-        name: "増本 綺良",
-        group: "sakura",
-        memberId: "57",
-      },
-      {
-        name: "松田 里奈",
-        group: "sakura",
-        memberId: "48",
-      },
-      {
-        name: "森田 ひかる",
-        group: "sakura",
-        memberId: "50",
-      },
-      {
-        name: "守屋 麗奈",
-        group: "sakura",
-        memberId: "58",
-      },
-      {
-        name: "山﨑 天",
-        group: "sakura",
-        memberId: "51",
-      },
-    ];
-    const list = data.map((member) => ({
-      insertOne: {
-        document: member,
-      },
-    }));
+  async updateInitMemberList(group: string) {
+    if (typeof group !== "string") {
+      throw new Error();
+    }
+    let api: string | undefined;
+    switch (group) {
+      case "sakura": {
+        api = "https://sakurazaka46.com/s/s46app/api/json/diary?cd=blog&mode=C";
+        break;
+      }
+      case "nogi": {
+        api =
+          "https://www.nogizaka46.com/s/n46/api/json/diary?cd=MEMBER&mode=C";
+        break;
+      }
+    }
+    api = api as string;
+
+    const res: AxiosResponse = await axios.get(api);
+    const data = res.data.blog as Array<{
+      [prop: string]: string;
+    }>;
+
+    const list = data.map((member) => {
+      const { member_id, creator } = member;
+      return {
+        updateOne: {
+          filter: {
+            memberId: member_id,
+            group,
+          },
+          update: {
+            $set: {
+              memberId: member_id,
+              group,
+              name: creator,
+            },
+          },
+          upsert: true,
+        },
+      };
+    });
 
     if (this.db === undefined) {
       throw new Error();
     }
 
     await this.db.collection("Member").bulkWrite(list);
-  }
-
-  async checkMemberListExist() {
-    if (this.db === undefined) {
-      throw new Error();
-    }
-    const member = await this.db
-      .collection("Member")
-      .findOne({ group: "sakura" });
-    return member !== null;
   }
 }
 

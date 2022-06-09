@@ -1,7 +1,7 @@
 import { IgroupFactory, blog, image } from "./IGroupFactory";
 import { SakuraApi } from "../api/SakuraApi";
 
-import axios, { Axios, AxiosResponse } from "axios";
+import axios, {  AxiosResponse } from "axios";
 import { JSDOM } from "jsdom";
 
 type responseBlog = {

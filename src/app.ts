@@ -5,6 +5,7 @@ import utc from "dayjs/plugin/utc";
 
 // import mongodb, { MongoClient, Db, ObjectId } from "mongodb";
 import { SakuraFactory } from "./groupFactory/SakuraFactory";
+import { NogiFactory } from "./groupFactory/NogiFactory";
 import { Mongodb, MongoMember } from "./util/database";
 const { downloadImage } = require("./util/download");
 
@@ -49,23 +50,23 @@ async function init() {
   );
   await db.connectClient();
 
-  const isInitMemberListExist: boolean = await db.checkMemberListExist();
-  if (!isInitMemberListExist) {
-    await db.createInitMemberList();
-  }
-
   return { db };
 }
 
 async function main() {
   try {
     const { db } = await init();
-
+    
     const groupName = args.group;
-    let factory: SakuraFactory | undefined;
+    await db.updateInitMemberList(groupName);
+    
+    let factory: SakuraFactory | NogiFactory | undefined;
     switch (groupName) {
       case "sakura": {
         factory = new SakuraFactory();
+      }
+      case "nogi": {
+        factory = new NogiFactory();
       }
       default: {
         factory;
@@ -95,6 +96,8 @@ async function main() {
         (item) => item.memberId === memberId
       ) as member;
 
+      console.log(`${member.name}'s blogs start download `);
+
       const eventName: string = `finish ${member.name} download`;
       const isFirstTime = member.date === undefined;
       let fromDate = member.date;
@@ -120,8 +123,10 @@ async function main() {
       });
 
       if (blogs.length === 0) {
-        return console.log("Already updated  latest blog");
+        console.log(`${member.name}'s blogs have already updated to latest `);
+        continue;
       }
+      console.log(`Blog counts: ${blogs.length}`);
 
       //store content in db
       await db.bulkInsertBlog(memberId, groupName, blogs);
@@ -145,8 +150,8 @@ async function main() {
       /** time count end */
       console.timeEnd(eventName);
       /** ----------------- */
-      process.exit();
     }
+    process.exit();
   } catch (error) {
     throw new Error(JSON.stringify(error));
   }

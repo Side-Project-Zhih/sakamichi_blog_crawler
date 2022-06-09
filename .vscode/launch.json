@@ -8,20 +8,28 @@
       "name": "browser",
       "program": "${workspaceFolder}/index.js",
       // "request": "browser",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "skipFiles": ["<node_internals>/**"],
       "type": "node"
     },
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "blogCrawler",
+      "name": "blogCrawlerSakura",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/app.ts",
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "args": ["-g", "sakura", "-m", "21"]
+      "args": ["-g", "sakura", "-m", "21", "50", "46", "47", "51", "11"]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "blogCrawlerNogi",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/app.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "args": ["-g", "nogi", "-m", "48008"]
     }
   ]
 }
