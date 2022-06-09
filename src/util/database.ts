@@ -65,19 +65,26 @@ class Mongodb implements Idb {
     }
 
     const blogsContentList = dataList.map((blog) => ({
-      insertOne: {
-        document: {
-          group: groupName,
-          memberId,
-          content: blog.content,
-          title: blog.title,
-          date: blog.date,
-          images: blog.images,
+      updateOne: {
+        filter: { memberId, group: groupName },
+        update: {
+          $set: {
+            group: groupName,
+            memberId,
+            content: blog.content,
+            title: blog.title,
+            date: blog.date,
+            images: blog.images,
+          },
         },
+        upsert: true,
       },
     }));
-
-    await this.db.collection("Blog").bulkWrite(blogsContentList);
+    try {
+      await this.db.collection("Blog").bulkWrite(blogsContentList);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async updateMember(
@@ -90,17 +97,21 @@ class Mongodb implements Idb {
     }
 
     const now = data.date;
-    await this.db.collection("Member").updateOne(
-      {
-        memberId,
-        group: groupName,
-      },
-      {
-        $set: {
-          date: now,
+    try {
+      await this.db.collection("Member").updateOne(
+        {
+          memberId,
+          group: groupName,
         },
-      }
-    );
+        {
+          $set: {
+            date: now,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
   }
   async updateInitMemberList(group: string) {
     if (typeof group !== "string") {

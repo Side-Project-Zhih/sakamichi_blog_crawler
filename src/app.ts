@@ -56,17 +56,19 @@ async function init() {
 async function main() {
   try {
     const { db } = await init();
-    
+
     const groupName = args.group;
     await db.updateInitMemberList(groupName);
-    
+
     let factory: SakuraFactory | NogiFactory | undefined;
     switch (groupName) {
       case "sakura": {
         factory = new SakuraFactory();
+        break;
       }
       case "nogi": {
         factory = new NogiFactory();
+        break;
       }
       default: {
         factory;
@@ -132,15 +134,13 @@ async function main() {
       await db.bulkInsertBlog(memberId, groupName, blogs);
 
       //downloadImages
-      const blogRunList = blogs.map(async (blog) => {
+      for (const blog of blogs) {
         const images = blog.images;
         const imageRunList = images.map(
           async (image) => await downloadImage(image)
         );
-        return await Promise.allSettled(imageRunList);
-      });
-
-      const test = await Promise.allSettled(blogRunList);
+        await Promise.allSettled(imageRunList);
+      }
 
       //udpate member last updated
       await db.updateMember(memberId, groupName, {
@@ -151,10 +151,12 @@ async function main() {
       console.timeEnd(eventName);
       /** ----------------- */
     }
-    process.exit();
   } catch (error) {
     throw new Error(JSON.stringify(error));
   }
 }
 
-main().then(() => console.log("DONE"));
+main().then(() => {
+  console.log("DONE");
+  process.exit();
+});
