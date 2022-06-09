@@ -50,31 +50,16 @@
             {{/if}}
 
           </div>
-
-
-
-
-
-
         </article>
       </div>
-
-
-
-
-
-
-
-
-
-
-
       <div class="col-r">
         <div class="blog-wdget-area">
 
           <div class="brog-newentry-r">
             <div class="com-title-ej">
+              <a href="http://localhost:3000/">
               <p class="part-eigo wf-a" style="margin-bottom: 30px;">BLOG SELECTOR</p>
+              </a>
               <form action="http://localhost:3000/query" method="post" class="d-flex flex-column"   style="margin-bottom: 50px;">
               <select name="memberId"class="mb-4">
                     {{#each members}}
@@ -84,7 +69,7 @@
               </select>
               <input type="month" class="mb-4" name="date" id="date" value={{year_month}}>
               <input type="hidden" name="group" value={{group}}>
-              <button id="query" type="submit" class="btn-light w-50 p-1">send</button>
+              <button id="query" type="submit" class="btn-light w-50 p-1">SEND</button>
               </form>
               <p class="mb-3">{{name}}</p>
               <img class="img-fluid" src="/sakura/profile/{{name}}.jpg" alt="">

@@ -30,7 +30,7 @@ app.use(async (req, res, next) => {
 
 app.post("/query", async (req, res) => {
   const { memberId, date, group } = req.body;
-  const [year, month] = date.split("-")
+  const [year, month] = date.split("-");
   const dateObject = dayjs(date, "YYYY-MM");
   const startDate = dateObject.format("YYYYMM01000000");
   const endDate = dateObject.add(1, "M").format("YYYYMM01000000");
@@ -389,6 +389,39 @@ app.get("/nogi/:member_id/:year/:month/blogs", async (req, res) => {
     month: blogMonth,
     day: blogDay,
     year_month,
+  });
+});
+
+app.get("/", async (req, res) => {
+  const nogi = await req.db
+    .collection("Member")
+    .find({
+      group: "nogi",
+      date: {
+        $exists: true,
+      },
+    })
+    .sort({ memberId: 1 })
+    .toArray();
+
+  const sakura = await req.db
+    .collection("Member")
+    .find({
+      group: "sakura",
+      date: {
+        $exists: true,
+      },
+    })
+    .sort({ memberId: 1 }).toArray();
+  const memberList = {
+    sakura,
+    nogi,
+  };
+
+  return res.render("index", {
+    isIndex: true,
+    memberList,
+    jsonMemberList: JSON.stringify(memberList),
   });
 });
 

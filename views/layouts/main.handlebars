@@ -23,5 +23,38 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+{{#if isIndex}}
+<script>
+  const list = JSON.parse(document.querySelector('#memberList').textContent)
+  // {
+  //   sakura: [{ memberId: "ddd", name: 'sakura' }, { memberId: "ddd", name: 'sadgfdgkufdgra' }],
+  //   nogi: [{ memberId: "ddd", name: 'nogi' }]
+  // };
 
+  const group = document.querySelector('#group');
+  const memberElem = document.querySelector('#member');
+  group.addEventListener('change', (event) => {
+    let memberList;
+    switch (group.value) {
+      case 'sakura': {
+        memberList = list['sakura'];
+        break;
+      }
+      case 'nogi': {
+        memberList = list['nogi'];
+        break;
+      }
+    }
+    const oldOptions = document.querySelectorAll('#member option');
+    oldOptions.forEach(item => item.remove());
+
+    for (const member of memberList) {
+      const option = document.createElement('option');
+      option.value = member.memberId;
+      option.textContent = member.name;
+      memberElem.appendChild(option);
+    }
+  })
+</script>
+{{/if}}
 </html>
