@@ -19,7 +19,7 @@
       "program": "${workspaceFolder}/src/app.ts",
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "args": ["-g", "sakura", "-m", "21", "50", "46", "47", "51", "11"]
+      "args": ["-g", "sakura", "-m", "11"]
     },
     {
       "type": "pwa-node",
@@ -29,7 +29,27 @@
       "program": "${workspaceFolder}/src/app.ts",
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "args": ["-g", "nogi", "-m", "48008"]
+      "args": ["-g", "nogi", "-m", "48008", "48006", "48018", "40007"]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "look sakura members",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/app.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "args": ["-s"]
+    },
+        {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "look nogi members",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/app.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "args": ["-n"]
     }
   ]
 }

@@ -14,18 +14,24 @@ type member = MongoMember;
 const COMMANDS = {
   group: {
     alias: "g",
-    describe: "chose group  sakura / nogi",
+    describe: "chose group sakura / nogi ex: -g sakura",
     string: true,
   },
   members: {
     alias: "m",
-    describe: "input member id",
+    describe:
+      "input member id ex: -m 21, if you want to download  multiple members please input ex: -m 21 11",
     array: true,
     string: true,
   },
   showSakuraMember: {
     alias: "s",
-    describe: "show sakurazaka member",
+    describe: "show sakurazaka member id",
+    boolean: true,
+  },
+  showNogiMember: {
+    alias: "n",
+    describe: "show nogizaka member id",
     boolean: true,
   },
 };
@@ -39,7 +45,9 @@ const args = yargs.options(COMMANDS).help().argv as {
   group: string;
   members: Array<string>;
   showSakuraMember: boolean;
+  showNogiMember: boolean;
 };
+
 dayjs.extend(utc);
 
 async function init() {
@@ -56,6 +64,24 @@ async function init() {
 async function main() {
   try {
     const { db } = await init();
+
+    //-----handle query memberlist------
+    if (args.showNogiMember) {
+      const group: string = "nogi";
+      await db.updateInitMemberList(group);
+      const list = await db.getMemberList(group);
+
+      return console.log(list);
+    }
+
+    if (args.showSakuraMember) {
+      const group: string = "sakura";
+      await db.updateInitMemberList(group);
+      const list = await db.getMemberList(group);
+      
+      return console.log(list);
+    }
+    //--------------------------------
 
     const groupName = args.group;
     await db.updateInitMemberList(groupName);
@@ -86,7 +112,7 @@ async function main() {
       }
     }
     // query member
-    const memberList = await db.getMemberList(members, groupName);
+    const memberList = await db.querytMembers(members, groupName);
     let count = "1000";
     const now: string = dayjs
       .utc(new Date())
@@ -152,6 +178,7 @@ async function main() {
       /** ----------------- */
     }
   } catch (error) {
+    console.error(error);
     throw new Error(JSON.stringify(error));
   }
 }

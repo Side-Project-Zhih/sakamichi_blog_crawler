@@ -12,7 +12,7 @@ type MongoMember = {
 
 interface Idb {
   connectClient(): Promise<void>;
-  getMemberList(
+  querytMembers(
     members: Array<string>,
     groupName: string
   ): Promise<Array<object>>;
@@ -27,6 +27,7 @@ interface Idb {
     data: object
   ): Promise<void>;
   updateInitMemberList(group: string): Promise<void>;
+  getMemberList(group: string): Promise<Array<object>>;
 }
 
 class Mongodb implements Idb {
@@ -39,7 +40,7 @@ class Mongodb implements Idb {
     this.db = db;
   }
 
-  async getMemberList(members: Array<string>, groupName: string) {
+  async querytMembers(members: Array<string>, groupName: string) {
     if (this.db === undefined) {
       throw new Error();
     }
@@ -66,7 +67,7 @@ class Mongodb implements Idb {
 
     const blogsContentList = dataList.map((blog) => ({
       updateOne: {
-        filter: { memberId, group: groupName },
+        filter: { memberId, group: groupName, date: blog.date },
         update: {
           $set: {
             group: groupName,
@@ -114,7 +115,7 @@ class Mongodb implements Idb {
     }
   }
   async updateInitMemberList(group: string) {
-    if (typeof group !== "string") {
+    if (typeof group !== "string" || this.db === undefined) {
       throw new Error();
     }
     let api: string | undefined;
@@ -156,11 +157,28 @@ class Mongodb implements Idb {
       };
     });
 
+    await this.db.collection("Member").bulkWrite(list);
+  }
+
+  async getMemberList(group: string) {
     if (this.db === undefined) {
       throw new Error();
     }
 
-    await this.db.collection("Member").bulkWrite(list);
+    const data = await this.db
+      .collection("Member")
+      .find({
+        group,
+      })
+      .project({
+        memberId: 1,
+        name: 1,
+        _id: 0,
+      })
+      .sort({ memberId: 1 })
+      .toArray();
+      
+    return data;
   }
 }
 
