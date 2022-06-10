@@ -16,11 +16,8 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
-app.set("views", "./views");
+app.set("views", path.join(__dirname, 'views'));
 
-app.post("/", (req, res) => {
-  res.send("fff");
-});
 app.use(async (req, res, next) => {
   const client = new MongoClient(
     "mongodb://localhost:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000"
