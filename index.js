@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { MongoClient } = require("mongodb");
 const { engine } = require("express-handlebars");
+const path = require("path");
 const dayjs = require("dayjs");
 
 const sakuraRouter = require("./routes/sakura")
@@ -11,7 +12,7 @@ dayjs().format();
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
@@ -100,4 +101,4 @@ app.get("/", async (req, res) => {
   });
 });
 
-app.listen(3000, () => console.log("listen 3000"));
+app.listen(3000, () => console.log("Reader is ready. Please input http://localhost:3000/ at browser to surfer blogs"));
