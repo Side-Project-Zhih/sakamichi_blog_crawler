@@ -1,0 +1,3721 @@
+@charset "UTF-8";
+
+
+
+
+.module-modal .mordal-box {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -470px;
+	margin-top: -350px;
+	width: 940px;
+	background-color: #fff;
+	z-index: 100;
+}
+
+
+
+.module-modal .mordal-box>.inner{
+	position: relative;
+	overflow-y: auto;
+	height: 700px;
+	padding: 50px;
+}
+.module-modal .mordal-box .btn-close{
+	position: absolute;
+	z-index: 1;
+	top: 50px;
+	right: 50px;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+}
+.module-modal .mordal-box .btn-close:before,
+.module-modal .mordal-box .btn-close:after{
+	content: "";
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(-45deg, transparent 49.5%,#CCC 49.5%, #CCC 50.5%, transparent 50.5%, transparent);
+}
+.module-modal .mordal-box .btn-close:after{
+	background-image: linear-gradient(45deg, transparent 49.5%,#CCC 49.5%, #CCC 50.5%, transparent 50.5%, transparent);
+}
+
+@media screen and (max-width:750px){
+
+	.module-modal .mordal-box {
+		left: 0;
+		/* top: 100px; */
+		top: 0;
+		margin-left: 0;
+		margin-top: 0;
+		width: 100%;
+	}
+	.module-modal .mordal-box{padding: 30px 0 20px;}
+	.module-modal .mordal-box>.inner{
+		/* height: calc(100vh - 140px); */
+		height: 100vh;
+		padding: 20px 27px;
+	}
+
+
+
+
+	/* .module-modal .mordal-box .btn-close{
+		top: 5px;
+		right: 5px;
+		width: 63px;
+		height: 63px;
+	}
+	.module-modal .mordal-box .btn-close{
+		top: 5px;
+		right: 5px;
+		width: 20px;
+		height: 20px;
+	}
+	.module-modal .mordal-box .btn-close:before{
+		background-image: linear-gradient(-45deg, transparent 47%,#CCC 47%, #CCC 53%, transparent 53%, transparent);
+	}
+	.module-modal .mordal-box .btn-close:after{
+		background-image: linear-gradient(45deg, transparent 47%,#CCC 47%, #CCC 53%, transparent 53%, transparent);
+	} */
+
+	
+	/* .module-modal .mordal-box .btn-close {
+		top: auto;
+		bottom: 0;
+		right: 0;
+		width: 63px;
+		height: 63px;
+	}
+	.module-modal .mordal-box .btn-close:before{
+		background-image: linear-gradient(-45deg, transparent 49.5%,#CCC 49.5%, #CCC 50.5%, transparent 50.5%, transparent);
+	}
+	.module-modal .mordal-box .btn-close:after{
+		background-image: linear-gradient(45deg, transparent 49.5%,#CCC 49.5%, #CCC 50.5%, transparent 50.5%, transparent);
+	} */
+
+	.module-modal .mordal-box .btn-close{
+		top: 0;
+		right: 0;
+		width: 63px;
+		height: 63px;
+	}
+	.module-modal .mordal-box .btn-close:before{
+		background-image: linear-gradient(-45deg, transparent 49.5%,#CCC 49.5%, #CCC 50.5%, transparent 50.5%, transparent);
+	}
+	.module-modal .mordal-box .btn-close:after{
+		background-image: linear-gradient(45deg, transparent 49.5%,#CCC 49.5%, #CCC 50.5%, transparent 50.5%, transparent);
+	}
+	
+}
+
+
+
+
+
+
+
+
+.module-modal {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10000;
+	position: fixed;
+	display: none; }
+.module-modal .bg {
+	  position: relative;
+	  width: 100%;
+	  height: 100%;
+	  /* background-color: #7E1080; */
+	  background-color: #FBE1E9;
+	  
+	  opacity: 0.6;
+	  
+}
+	.module-modal.js-member-filter .mordal-box {
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  margin-left: -430px;
+	  margin-top: -332px;
+	  width: 860px;
+	  background-color: #fff;
+	  z-index: 100; }
+	  .module-modal.js-member-filter .mordal-box .sort-box {
+		padding: 10px 0 5px 20px;
+		border-bottom: 1px solid #f3f3f3; }
+		.module-modal.js-member-filter .mordal-box .sort-box ul li {
+		  font-size: 16px;
+		  font-size: 1.6rem;
+		  position: relative;
+		  display: inline-block;
+		  padding: 6px 10px;
+		  margin-right: 30px; }
+		  .module-modal.js-member-filter .mordal-box .sort-box ul li:hover, .module-modal.js-member-filter .mordal-box .sort-box ul li.active {
+			color: #7E1080;
+			background-color: #f5fbee;
+			border-radius: 5px;
+			cursor: pointer; }
+		  .module-modal.js-member-filter .mordal-box .sort-box ul li select {
+			padding: 5px 10px;
+			position: absolute;
+			opacity: 0;
+			left: 0;
+			top: 0;
+			height: 31px;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none; }
+	  .module-modal.js-member-filter .mordal-box .check-box {
+		margin: 12px 0;
+		padding-left: 20px; }
+	.module-modal.js-member-filter .mordal-box .check-box > div {
+		display: inline-block;
+		font-size: 16px;
+		font-size: 1.6rem;
+		color: #8d8d8d;
+		border: 1px solid #d2d2d2;
+		/* border-radius: 20px; */
+		margin-right: 30px;
+		padding: 5px;
+	}
+		.module-modal.js-member-filter .mordal-box .check-box p {
+		  margin: 0;
+		  padding: 0 10px; }
+		  .module-modal.js-member-filter .mordal-box .check-box p i {
+			margin-right: 5px; }
+	  .module-modal.js-member-filter .mordal-box .member-box {
+		border-bottom: 1px solid #f3f3f3;
+		overflow: scroll;
+		height: 450px; }
+		.module-modal.js-member-filter .mordal-box .member-box ul {
+		  width: 720px;
+		  margin: 0 auto;
+		  overflow: hidden;
+		  text-align: center; }
+		  .module-modal.js-member-filter .mordal-box .member-box ul li {
+			height: 150px;
+			width: 104px;
+			display: inline-block;
+			margin: 10px 20px;
+			text-align: left;
+			float: left; }
+			.module-modal.js-member-filter .mordal-box .member-box ul li p {
+			  display: inline-block;
+			  margin: 0; }
+			.module-modal.js-member-filter .mordal-box .member-box ul li .box-img img {
+			  border: 1px solid #fff;
+			  margin-bottom: 5px; }
+			.module-modal.js-member-filter .mordal-box .member-box ul li p.check input[type=checkbox] {
+			  display: none; }
+			.module-modal.js-member-filter .mordal-box .member-box ul li p.check input[type=checkbox]:checked + label:before {
+			  background-color: #037aff;
+			  border: 1px solid #037aff; }
+			.module-modal.js-member-filter .mordal-box .member-box ul li p.check label {
+			  font-size: 13px;
+			  font-size: 1.3rem;
+
+
+			  /* color: #7E1080; */
+			  color: #E995AD;
+
+			  
+
+
+			  cursor: pointer;
+			  display: inline-block;
+			  position: relative;
+			  left: 24px; }
+			  .module-modal.js-member-filter .mordal-box .member-box ul li p.check label:before {
+				content: "";
+				position: absolute;
+				left: -24px;
+				width: 14px;
+				height: 14px;
+				display: inline-block;
+				vertical-align: middle;
+				border-radius: 100%;
+				border: 1px solid #d2d2d2;
+				cursor: pointer; }
+			  .module-modal.js-member-filter .mordal-box .member-box ul li p.check label:after {
+				content: "";
+				position: absolute;
+				left: -23px;
+				width: 12px;
+				height: 7px;
+				margin-top: 3px;
+				border-left: 2px solid #fff;
+				border-bottom: 2px solid #fff;
+				-webkit-transform: rotate(-45deg) scale(0.5);
+				transform: rotate(-45deg) scale(0.5); }
+			.module-modal.js-member-filter .mordal-box .member-box ul li:hover .box-img img, .module-modal.js-member-filter .mordal-box .member-box ul li.checked .box-img img {
+
+
+
+			  /* border: 1px solid #7E1080; */
+			  border: 1px solid #E995AD;
+			  
+			
+			
+			}
+	  .module-modal.js-member-filter .mordal-box .btn-box {
+		height: auto;
+		position: relative; }
+		/* .module-modal.js-member-filter .mordal-box .btn-box .btn-decision {
+		  position: absolute;
+		  right: 80px;
+		  top: 30px;
+		  width: 250px;
+		  height: 54px;
+		  background-color: #7E1080;
+		  text-align: center;
+		  border-radius: 10px;
+		  line-height: 54px; }
+		  .module-modal.js-member-filter .mordal-box .btn-box .btn-decision a {
+			font-size: 19px;
+			font-size: 1.9rem;
+			display: inline-block;
+			color: #fff;
+			width: 250px;
+			height: 54px; } */
+	.module-modal.js-schedule-detail .content {
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  margin-left: -345px;
+	  margin-top: -332px;
+	  width: 690px;
+	  height: 660px;
+	  background-color: #fff;
+	  box-shadow: 14px 18px 18px 0px rgba(0, 0, 0, 0.14);
+	  z-index: 100; }
+	  .module-modal.js-schedule-detail .content .close-btn {
+		position: absolute;
+		border-radius: 20px;
+		top: 20px;
+		right: 22px;
+		width: 40px;
+		height: 40px;
+		background: #bfbfbf;
+		cursor: pointer;
+		z-index: 100;
+		opacity: 0.6; }
+		.module-modal.js-schedule-detail .content .close-btn:hover {
+		  opacity: 1; }
+		.module-modal.js-schedule-detail .content .close-btn span {
+		  position: absolute;
+		  width: 80%;
+		  height: 1px;
+		  top: 50%;
+		  left: 10%;
+		  background: #fff; }
+		  .module-modal.js-schedule-detail .content .close-btn span.bar1 {
+			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg); }
+		  .module-modal.js-schedule-detail .content .close-btn span.bar2 {
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg); }
+	  .module-modal.js-schedule-detail .content .details {
+		position: relative;
+		height: 100%;
+		padding: 24px; }
+		.module-modal.js-schedule-detail .content .details .slick-list {
+		  position: relative;
+		  height: 100%; }
+		.module-modal.js-schedule-detail .content .details .slick-track {
+		  position: relative;
+		  height: 100%; }
+	  .module-modal.js-schedule-detail .content .detail {
+		height: 100%;
+		max-width: 100%;
+		overflow: auto; }
+		.module-modal.js-schedule-detail .content .detail h2 {
+		  font-size: 24px;
+		  font-size: 2.4rem;
+		  line-height: 1.5;
+		  letter-spacing: normal;
+		  margin: 0;
+		  color: #8d8d8d;
+		  padding-right: 60px; }
+		.module-modal.js-schedule-detail .content .detail .body p, .module-modal.js-schedule-detail .content .detail .body li, .module-modal.js-schedule-detail .content .detail .body span, .module-modal.js-schedule-detail .content .detail .body a {
+		  font-size: 12px;
+		  font-size: 1.2rem;
+		  color: #8d8d8d; }
+		.module-modal.js-schedule-detail .content .detail .body a {
+
+
+		  /* color: #7E1080; */
+		  color: #E995AD;
+
+		  
+
+
+
+
+		  text-decoration: underline; }
+	.module-modal.js-schedule-detail .back-btn, .module-modal.js-schedule-detail .next-btn {
+	  position: absolute;
+	  top: 50%;
+	  margin-top: -50px;
+	  cursor: pointer;
+	  z-index: 100; }
+	  .module-modal.js-schedule-detail .back-btn img, .module-modal.js-schedule-detail .next-btn img {
+		width: 69px; }
+	.module-modal.js-schedule-detail .back-btn {
+	  left: 50%;
+	  margin-left: -434px; }
+	.module-modal.js-schedule-detail .next-btn {
+	  right: 50%;
+	  margin-right: -434px; }
+	.module-modal.js-member-detail .content {
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  margin-left: -345px;
+	  margin-top: -332px;
+	  width: 690px;
+	  height: 660px;
+	  z-index: 100;
+	  text-align: center; }
+	  .module-modal.js-member-detail .content img {
+		width: auto;
+		height: 100%; }
+	  .module-modal.js-member-detail .content .close-btn {
+		position: absolute;
+		border-radius: 20px;
+		top: 20px;
+		right: 22px;
+		width: 40px;
+		height: 40px;
+		background: #bfbfbf;
+		cursor: pointer;
+		z-index: 100;
+		opacity: 0.6; }
+		.module-modal.js-member-detail .content .close-btn:hover {
+		  opacity: 1; }
+	.module-modal.js-report-slider .content {
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  margin-left: -345px;
+	  margin-top: -332px;
+	  width: 690px;
+	  height: 660px;
+	  z-index: 100; }
+	.module-modal.js-report-slider .slider {
+	  position: relative;
+	  width: 100%;
+	  height: 100%; }
+	  .module-modal.js-report-slider .slider .slide {
+		width: 690px !important;
+		height: 660px;
+		display: table;
+		vertical-align: middle;
+		text-align: center; }
+		.module-modal.js-report-slider .slider .slide .imgwrp {
+		  display: table-cell;
+		  vertical-align: middle;
+		  text-align: center; }
+		.module-modal.js-report-slider .slider .slide img {
+		  width: auto;
+		  height: auto;
+		  display: inline-block; }
+		  .module-modal.js-report-slider .slider .slide img.w {
+			min-width: 100%;
+			max-height: 100%; }
+		  .module-modal.js-report-slider .slider .slide img.h {
+			max-width: 100%;
+			min-height: 100%; }
+	  .module-modal.js-report-slider .slider .slick-list {
+		position: relative;
+		height: 100%; }
+	  .module-modal.js-report-slider .slider .slick-track {
+		position: relative;
+		height: 100%; }
+	.module-modal.js-report-slider .back-btn, .module-modal.js-report-slider .next-btn {
+	  position: absolute;
+	  top: 50%;
+	  margin-top: -50px;
+	  cursor: pointer;
+	  z-index: 100; }
+	  .module-modal.js-report-slider .back-btn img, .module-modal.js-report-slider .next-btn img {
+		width: 69px; }
+	.module-modal.js-report-slider .back-btn {
+	  left: 50%;
+	  margin-left: -434px; }
+	.module-modal.js-report-slider .next-btn {
+	  right: 50%;
+	  margin-right: -434px; }
+	.module-modal.js-video .content {
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  margin-left: -360px;
+	  margin-top: -203px;
+	  width: 720px;
+	  height: 406px;
+	  z-index: 100;
+	  text-align: center; }
+	  .module-modal.js-video .content .playerwrp {
+		position: relative;
+		width: 100%;
+		padding: 56.25% 0 0 0; }
+	  .module-modal.js-video .content iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%; }
+	.module-modal.js-tv .content {
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  margin-left: -345px;
+	  margin-top: -182px;
+	  width: 690px;
+	  height: 360px;
+	  background-color: #fff;
+	  box-shadow: 14px 18px 18px 0px rgba(0, 0, 0, 0.14);
+	  z-index: 100; }
+	  .module-modal.js-tv .content .details {
+		position: relative;
+		height: 100%;
+		padding: 24px; }
+	  .module-modal.js-tv .content .detail {
+		display: none;
+		height: 100%;
+		max-width: 100%;
+		overflow: auto; }
+		.module-modal.js-tv .content .detail p.date {
+		  margin-top: 0; }
+		  .module-modal.js-tv .content .detail p.date time {
+			font-size: 12px;
+			font-size: 1.2rem;
+			margin-bottom: 10px; }
+		.module-modal.js-tv .content .detail h2 {
+		  font-size: 24px;
+		  font-size: 2.4rem;
+		  line-height: 1.5;
+		  letter-spacing: normal;
+		  margin: 0;
+		  color: #7E1080;
+		  padding-right: 60px; }
+		.module-modal.js-tv .content .detail .body p, .module-modal.js-tv .content .detail .body li, .module-modal.js-tv .content .detail .body span, .module-modal.js-tv .content .detail .body a {
+		  font-size: 18px;
+		  font-size: 1.8rem;
+		  color: #8d8d8d; }
+		.module-modal.js-tv .content .detail .body a {
+		  color: #7E1080;
+		  text-decoration: underline; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:750px){
+
+
+		  
+			/* .filterwrp .js-toggle-btn {
+			  background-color: #eeeeee;
+			  font-size: 1.2rem;
+			} */
+			 
+			  .filterwrp .js-toggle-btn.open .bar2 {
+				opacity: 0; }
+			  .filterwrp .js-toggle-btn .toggle-icon {
+				position: absolute;
+				top: 9px;
+				right: 18px;
+				width: 15px;
+				height: 15px;
+				border-radius: 2px;
+				background-color: #999999; }
+				.filterwrp .js-toggle-btn .toggle-icon .bar1, .filterwrp .js-toggle-btn .toggle-icon .bar2 {
+				  position: absolute;
+				  left: 2px;
+				  top: 50%;
+				  margin-top: -1px;
+				  width: 11px;
+				  height: 2px;
+				  background-color: #fff; }
+				.filterwrp .js-toggle-btn .toggle-icon .bar2 {
+				  -webkit-transition: opacity 0.3s linear;
+				  transition: opacity 0.3s linear;
+				  -webkit-transform: rotate(90deg);
+				  transform: rotate(90deg); }
+			.filterwrp .filters {
+			  position: relative;
+			  /* display: none; */
+			 }
+			  .filterwrp .filters .toggle-icon {
+				position: absolute;
+				top: 9px;
+				right: 18px;
+				width: 15px;
+				height: 15px;
+				border-radius: 2px;
+				background-color: #999999;
+				background-color: transparent; }
+
+
+/* 
+				.filterwrp .filters .toggle-icon .bar1, .filterwrp .filters .toggle-icon .bar2 {
+				  position: absolute;
+				  left: 2px;
+				  top: 50%;
+				  margin-top: -1px;
+				  width: 11px;
+				  height: 2px;
+				  background-color: #fff; }
+				.filterwrp .filters .toggle-icon .bar2 {
+				  -webkit-transition: opacity 0.3s linear;
+				  transition: opacity 0.3s linear;
+				  -webkit-transform: rotate(90deg);
+				  transform: rotate(90deg); }
+			  .filterwrp .filters .filter-ttl {
+				box-sizing: border-box;
+				position: relative;
+				width: 100%;
+				height: 33px;
+				padding-left: 10px;
+				border-bottom: 1px solid #cccccc;
+				background-color: #FFF; }
+				.filterwrp .filters .filter-ttl p {
+				  font-size: 12px;
+				  font-size: 1.2rem;
+				  margin: 0;
+				  text-align: left;
+				  line-height: 33px; }
+				.filterwrp .filters .filter-ttl.open .bar2 {
+				  opacity: 0; }
+				.filterwrp .filters .filter-ttl.member {
+				  color: #77c059; }
+				  .filterwrp .filters .filter-ttl.member .bar1, .filterwrp .filters .filter-ttl.member .bar2 {
+					background-color: #77c059; }
+				.filterwrp .filters .filter-ttl.category {
+				  color: #9b56be; }
+				  .filterwrp .filters .filter-ttl.category .bar1, .filterwrp .filters .filter-ttl.category .bar2 {
+					background-color: #9b56be; } */
+
+
+
+
+
+			  .filterwrp .filters .filter-content:not(.parent) {
+				display: none;
+				border-bottom: 1px solid #cccccc; }
+				.filterwrp .filters .filter-content.parent{border-bottom: 1px solid #cccccc;}
+				/* .filterwrp .filters .filter-content.f-member {
+				  background-color: #f5fbee; }
+				  .filterwrp .filters .filter-content.f-member li.checked label, .filterwrp .filters .filter-content.f-member li.checked span {
+					border: 1px solid #77c059;
+					color: #7E1080; }
+				.filterwrp .filters .filter-content.f-category {
+				  background-color: #fef3fc; }
+				  .filterwrp .filters .filter-content.f-category li.checked label, .filterwrp .filters .filter-content.f-category li.checked span {
+					border: 1px solid #9b56be;
+					color: #9b56be; } */
+				.filterwrp .filters .filter-content ul {
+				  margin: 0 auto;
+				  max-width: 310px;
+				  overflow: hidden;
+				  padding: 10px 0; }
+				  .filterwrp .filters .filter-content ul li {
+					font-size: 12px;
+					font-size: 1.2rem;
+					float: left;
+					margin: 8px 0;
+					text-align: center;
+					width: 33.333%; }
+					.filterwrp .filters .filter-content ul li input {
+					  display: none; }
+					.filterwrp .filters .filter-content ul li label, .filterwrp .filters .filter-content ul li span {
+					  box-sizing: border-box;
+					  display: inline-block;
+					  width: 90%;
+					  text-align: center;
+					  line-height: 20px;
+					  border: 1px solid transparent; }
+					.filterwrp .filters .filter-content ul li.checked label, .filterwrp .filters .filter-content ul li.checked span {
+					  border-radius: 3px;
+					  background-color: #fff; }
+			  .filterwrp .filters .postwrp {
+				padding: 7px 0 14px; }
+				/* .filterwrp .filters .postwrp .post-btn {
+				  width: 178px;
+				  height: 26px;
+				  background-color: #b9df90;
+				  border-radius: 3px;
+				  box-shadow: 0px 1px 0px 0px #77c059;
+				  margin: 0 auto; } 
+				  .filterwrp .filters .postwrp .post-btn p {
+					font-size: 12px;
+					font-size: 1.2rem;
+					color: #fff;
+					text-align: center;
+					margin: 0;
+					line-height: 26px; }
+					
+					*/
+}
+
+
+
+
+
+
+
+/*!
+ * FullCalendar v2.6.0 Stylesheet
+ * Docs & License: http://fullcalendar.io/
+ * (c) 2015 Adam Shaw
+ */
+ .fc {
+	direction: ltr;
+	text-align: left; }
+  
+  .fc-rtl {
+	text-align: right; }
+  
+  body .fc {
+	/* extra precedence to overcome jqui */
+	font-size: 1em; }
+  
+  /* Colors
+  --------------------------------------------------------------------------------------------------*/
+  .fc-unthemed th,
+  .fc-unthemed td,
+  .fc-unthemed thead,
+  .fc-unthemed tbody,
+  .fc-unthemed .fc-divider,
+  .fc-unthemed .fc-row,
+  .fc-unthemed .fc-popover {
+	border-color: #ddd; }
+  
+  .fc-unthemed .fc-popover {
+	background-color: #fff; }
+  
+  .fc-unthemed .fc-divider,
+  .fc-unthemed .fc-popover .fc-header {
+	background: #eee; }
+  
+  .fc-unthemed .fc-popover .fc-header .fc-close {
+	color: #666; }
+  
+  .fc-unthemed .fc-today {
+	background: #fcf8e3; }
+  
+  .fc-highlight {
+	/* when user is selecting cells */
+	background: #bce8f1;
+	opacity: .3;
+	filter: alpha(opacity=30);
+	/* for IE */ }
+  
+  .fc-bgevent {
+	/* default look for background events */
+	background: #8fdf82;
+	opacity: .3;
+	filter: alpha(opacity=30);
+	/* for IE */ }
+  
+  .fc-nonbusiness {
+	/* default look for non-business-hours areas */
+	/* will inherit .fc-bgevent's styles */
+	background: #d7d7d7; }
+  
+  /* Icons (inline elements with styled text that mock arrow icons)
+  --------------------------------------------------------------------------------------------------*/
+  .fc-icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	line-height: 1em;
+	font-size: 1em;
+	text-align: center;
+	overflow: hidden;
+	font-family: "Courier New", Courier, monospace;
+	/* don't allow browser text-selection */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none; }
+  
+  /*
+  Acceptable font-family overrides for individual icons:
+	  "Arial", sans-serif
+	  "Times New Roman", serif
+  
+  NOTE: use percentage font sizes or else old IE chokes
+  */
+  .fc-icon:after {
+	position: relative;
+	margin: 0 -1em;
+	/* ensures character will be centered, regardless of width */ }
+  
+  .fc-icon-left-single-arrow:after {
+	content: "\02039";
+	font-weight: bold;
+	font-size: 200%;
+	top: -7%;
+	left: 3%; }
+  
+  .fc-icon-right-single-arrow:after {
+	content: "\0203A";
+	font-weight: bold;
+	font-size: 200%;
+	top: -7%;
+	left: -3%; }
+  
+  .fc-icon-left-double-arrow:after {
+	content: "\000AB";
+	font-size: 160%;
+	top: -7%; }
+  
+  .fc-icon-right-double-arrow:after {
+	content: "\000BB";
+	font-size: 160%;
+	top: -7%; }
+  
+  .fc-icon-left-triangle:after {
+	content: "\25C4";
+	font-size: 125%;
+	top: 3%;
+	left: -2%; }
+  
+  .fc-icon-right-triangle:after {
+	content: "\25BA";
+	font-size: 125%;
+	top: 3%;
+	left: 2%; }
+  
+  .fc-icon-down-triangle:after {
+	content: "\25BC";
+	font-size: 125%;
+	top: 2%; }
+  
+  .fc-icon-x:after {
+	content: "\000D7";
+	font-size: 200%;
+	top: 6%; }
+  
+  /* Buttons (styled <button> tags, normalized to work cross-browser)
+  --------------------------------------------------------------------------------------------------*/
+  .fc button {
+	/* force height to include the border and padding */
+	box-sizing: border-box;
+	/* dimensions */
+	margin: 0;
+	height: 2.1em;
+	padding: 0 .6em;
+	/* text & cursor */
+	font-size: 1em;
+	/* normalize */
+	white-space: nowrap;
+	cursor: pointer; }
+  
+  /* Firefox has an annoying inner border */
+  .fc button::-moz-focus-inner {
+	margin: 0;
+	padding: 0; }
+  
+  .fc-state-default {
+	/* non-theme */
+	border: 1px solid; }
+  
+  .fc-state-default.fc-corner-left {
+	/* non-theme */
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px; }
+  
+  .fc-state-default.fc-corner-right {
+	/* non-theme */
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px; }
+  
+  /* icons in buttons */
+  .fc button .fc-icon {
+	/* non-theme */
+	position: relative;
+	top: -0.05em;
+	/* seems to be a good adjustment across browsers */
+	margin: 0 .2em;
+	vertical-align: middle; }
+  
+  /*
+	button states
+	borrowed from twitter bootstrap (http://twitter.github.com/bootstrap/)
+  */
+  .fc-state-default {
+	background-color: #f5f5f5;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+	background-repeat: repeat-x;
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	color: #333;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); }
+  
+  .fc-state-hover,
+  .fc-state-down,
+  .fc-state-active,
+  .fc-state-disabled {
+	color: #333333;
+	background-color: #e6e6e6; }
+  
+  .fc-state-hover {
+	color: #333333;
+	text-decoration: none;
+	background-position: 0 -15px;
+	-webkit-transition: background-position 0.1s linear;
+	transition: background-position 0.1s linear; }
+  
+  .fc-state-down,
+  .fc-state-active {
+	background-color: #cccccc;
+	background-image: none;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05); }
+  
+  .fc-state-disabled {
+	cursor: default;
+	background-image: none;
+	opacity: 0.65;
+	filter: alpha(opacity=65);
+	box-shadow: none; }
+  
+  /* Buttons Groups
+  --------------------------------------------------------------------------------------------------*/
+  .fc-button-group {
+	display: inline-block; }
+  
+  /*
+  every button that is not first in a button group should scootch over one pixel and cover the
+  previous button's border...
+  */
+  .fc .fc-button-group > * {
+	/* extra precedence b/c buttons have margin set to zero */
+	float: left;
+	margin: 0 0 0 -1px; }
+  
+  .fc .fc-button-group > :first-child {
+	/* same */
+	margin-left: 0; }
+  
+  /* Popover
+  --------------------------------------------------------------------------------------------------*/
+  .fc-popover {
+	position: absolute;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); }
+  
+  .fc-popover .fc-header {
+	/* TODO: be more consistent with fc-head/fc-body */
+	padding: 2px 4px; }
+  
+  .fc-popover .fc-header .fc-title {
+	margin: 0 2px; }
+  
+  .fc-popover .fc-header .fc-close {
+	cursor: pointer; }
+  
+  .fc-ltr .fc-popover .fc-header .fc-title,
+  .fc-rtl .fc-popover .fc-header .fc-close {
+	float: left; }
+  
+  .fc-rtl .fc-popover .fc-header .fc-title,
+  .fc-ltr .fc-popover .fc-header .fc-close {
+	float: right; }
+  
+  /* unthemed */
+  .fc-unthemed .fc-popover {
+	border-width: 1px;
+	border-style: solid; }
+  
+  .fc-unthemed .fc-popover .fc-header .fc-close {
+	font-size: .9em;
+	margin-top: 2px; }
+  
+  /* jqui themed */
+  .fc-popover > .ui-widget-header + .ui-widget-content {
+	border-top: 0;
+	/* where they meet, let the header have the border */ }
+  
+  /* Misc Reusable Components
+  --------------------------------------------------------------------------------------------------*/
+  .fc-divider {
+	border-style: solid;
+	border-width: 1px; }
+  
+  hr.fc-divider {
+	height: 0;
+	margin: 0;
+	padding: 0 0 2px;
+	/* height is unreliable across browsers, so use padding */
+	border-width: 1px 0; }
+  
+  .fc-clear {
+	clear: both; }
+  
+  .fc-bg,
+  .fc-bgevent-skeleton,
+  .fc-highlight-skeleton,
+  .fc-helper-skeleton {
+	/* these element should always cling to top-left/right corners */
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0; }
+  
+  .fc-bg {
+	bottom: 0;
+	/* strech bg to bottom edge */ }
+  
+  .fc-bg table {
+	height: 100%;
+	/* strech bg to bottom edge */ }
+  
+  /* Tables
+  --------------------------------------------------------------------------------------------------*/
+  .fc table {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 1em;
+	/* normalize cross-browser */ }
+  
+  .fc th {
+	text-align: center; }
+  
+  .fc th,
+  .fc td {
+	border-style: solid;
+	border-width: 1px;
+	padding: 0;
+	vertical-align: top; }
+  
+  .fc td.fc-today {
+	border-style: double;
+	/* overcome neighboring borders */ }
+  
+  /* Fake Table Rows
+  --------------------------------------------------------------------------------------------------*/
+  .fc .fc-row {
+	/* extra precedence to overcome themes w/ .ui-widget-content forcing a 1px border */
+	/* no visible border by default. but make available if need be (scrollbar width compensation) */
+	border-style: solid;
+	border-width: 0; }
+  
+  .fc-row table {
+	/* don't put left/right border on anything within a fake row.
+	   the outer tbody will worry about this */
+	border-left: 0 hidden transparent;
+	border-right: 0 hidden transparent;
+	/* no bottom borders on rows */
+	border-bottom: 0 hidden transparent; }
+  
+  .fc-row:first-child table {
+	border-top: 0 hidden transparent;
+	/* no top border on first row */ }
+  
+  /* Day Row (used within the header and the DayGrid)
+  --------------------------------------------------------------------------------------------------*/
+  .fc-row {
+	position: relative; }
+  
+  .fc-row .fc-bg {
+	z-index: 1; }
+  
+  /* highlighting cells & background event skeleton */
+  .fc-row .fc-bgevent-skeleton,
+  .fc-row .fc-highlight-skeleton {
+	bottom: 0;
+	/* stretch skeleton to bottom of row */ }
+  
+  .fc-row .fc-bgevent-skeleton table,
+  .fc-row .fc-highlight-skeleton table {
+	height: 100%;
+	/* stretch skeleton to bottom of row */ }
+  
+  .fc-row .fc-highlight-skeleton td,
+  .fc-row .fc-bgevent-skeleton td {
+	border-color: transparent; }
+  
+  .fc-row .fc-bgevent-skeleton {
+	z-index: 2; }
+  
+  .fc-row .fc-highlight-skeleton {
+	z-index: 3; }
+  
+  /*
+  row content (which contains day/week numbers and events) as well as "helper" (which contains
+  temporary rendered events).
+  */
+  .fc-row .fc-content-skeleton {
+	position: relative;
+	z-index: 4;
+	padding-bottom: 2px;
+	/* matches the space above the events */ }
+  
+  .fc-row .fc-helper-skeleton {
+	z-index: 5; }
+  
+  .fc-row .fc-content-skeleton td,
+  .fc-row .fc-helper-skeleton td {
+	/* see-through to the background below */
+	background: none;
+	/* in case <td>s are globally styled */
+	border-color: transparent;
+	/* don't put a border between events and/or the day number */
+	border-bottom: 0; }
+  
+  .fc-row .fc-content-skeleton tbody td,
+  .fc-row .fc-helper-skeleton tbody td {
+	/* don't put a border between event cells */
+	border-top: 0; }
+  
+  /* Scrolling Container
+  --------------------------------------------------------------------------------------------------*/
+  .fc-scroller {
+	/* this class goes on elements for guaranteed vertical scrollbars */
+	overflow-y: scroll;
+	overflow-x: hidden; }
+  
+  .fc-scroller > * {
+	/* we expect an immediate inner element */
+	position: relative;
+	/* re-scope all positions */
+	width: 100%;
+	/* hack to force re-sizing this inner element when scrollbars appear/disappear */
+	overflow: hidden;
+	/* don't let negative margins or absolute positioning create further scroll */ }
+  
+  /* Global Event Styles
+  --------------------------------------------------------------------------------------------------*/
+  .fc-event {
+	position: relative;
+	/* for resize handle and other inner positioning */
+	display: block;
+	/* make the <a> tag block */
+	font-size: .85em;
+	line-height: 1.3;
+	border-radius: 3px;
+	border: 1px solid #3a87ad;
+	/* default BORDER color */
+	background-color: #3a87ad;
+	/* default BACKGROUND color */
+	font-weight: normal;
+	/* undo jqui's ui-widget-header bold */ }
+  
+  /* overpower some of bootstrap's and jqui's styles on <a> tags */
+  .fc-event,
+  .fc-event:hover,
+  .ui-widget .fc-event {
+	color: #fff;
+	/* default TEXT color */
+	text-decoration: none;
+	/* if <a> has an href */ }
+  
+  .fc-event[href],
+  .fc-event.fc-draggable {
+	cursor: pointer;
+	/* give events with links and draggable events a hand mouse pointer */ }
+  
+  .fc-not-allowed,
+  .fc-not-allowed .fc-event {
+	/* to override an event's custom cursor */
+	cursor: not-allowed; }
+  
+  .fc-event .fc-bg {
+	/* the generic .fc-bg already does position */
+	z-index: 1;
+	background: #fff;
+	opacity: .25;
+	filter: alpha(opacity=25);
+	/* for IE */ }
+  
+  .fc-event .fc-content {
+	position: relative;
+	z-index: 2; }
+  
+  .fc-event .fc-resizer {
+	position: absolute;
+	z-index: 3; }
+  
+  /* Horizontal Events
+  --------------------------------------------------------------------------------------------------*/
+  /* events that are continuing to/from another week. kill rounded corners and butt up against edge */
+  .fc-ltr .fc-h-event.fc-not-start,
+  .fc-rtl .fc-h-event.fc-not-end {
+	margin-left: 0;
+	border-left-width: 0;
+	padding-left: 1px;
+	/* replace the border with padding */
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0; }
+  
+  .fc-ltr .fc-h-event.fc-not-end,
+  .fc-rtl .fc-h-event.fc-not-start {
+	margin-right: 0;
+	border-right-width: 0;
+	padding-right: 1px;
+	/* replace the border with padding */
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0; }
+  
+  /* resizer */
+  .fc-h-event .fc-resizer {
+	/* positioned it to overcome the event's borders */
+	top: -1px;
+	bottom: -1px;
+	left: -1px;
+	right: -1px;
+	width: 5px; }
+  
+  /* left resizer  */
+  .fc-ltr .fc-h-event .fc-start-resizer,
+  .fc-ltr .fc-h-event .fc-start-resizer:before,
+  .fc-ltr .fc-h-event .fc-start-resizer:after,
+  .fc-rtl .fc-h-event .fc-end-resizer,
+  .fc-rtl .fc-h-event .fc-end-resizer:before,
+  .fc-rtl .fc-h-event .fc-end-resizer:after {
+	right: auto;
+	/* ignore the right and only use the left */
+	cursor: w-resize; }
+  
+  /* right resizer */
+  .fc-ltr .fc-h-event .fc-end-resizer,
+  .fc-ltr .fc-h-event .fc-end-resizer:before,
+  .fc-ltr .fc-h-event .fc-end-resizer:after,
+  .fc-rtl .fc-h-event .fc-start-resizer,
+  .fc-rtl .fc-h-event .fc-start-resizer:before,
+  .fc-rtl .fc-h-event .fc-start-resizer:after {
+	left: auto;
+	/* ignore the left and only use the right */
+	cursor: e-resize; }
+  
+  /* DayGrid events
+  ----------------------------------------------------------------------------------------------------
+  We use the full "fc-day-grid-event" class instead of using descendants because the event won't
+  be a descendant of the grid when it is being dragged.
+  */
+  .fc-day-grid-event {
+	margin: 1px 2px 0;
+	/* spacing between events and edges */
+	padding: 0 1px; }
+  
+  .fc-day-grid-event .fc-content {
+	/* force events to be one-line tall */
+	white-space: nowrap;
+	overflow: hidden; }
+  
+  .fc-day-grid-event .fc-time {
+	font-weight: bold; }
+  
+  .fc-day-grid-event .fc-resizer {
+	/* enlarge the default hit area */
+	left: -3px;
+	right: -3px;
+	width: 7px; }
+  
+  /* Event Limiting
+  --------------------------------------------------------------------------------------------------*/
+  /* "more" link that represents hidden events */
+  a.fc-more {
+	margin: 1px 3px;
+	font-size: .85em;
+	cursor: pointer;
+	text-decoration: none; }
+  
+  a.fc-more:hover {
+	text-decoration: underline; }
+  
+  .fc-limited {
+	/* rows and cells that are hidden because of a "more" link */
+	display: none; }
+  
+  /* popover that appears when "more" link is clicked */
+  .fc-day-grid .fc-row {
+	z-index: 1;
+	/* make the "more" popover one higher than this */ }
+  
+  .fc-more-popover {
+	z-index: 2;
+	width: 220px; }
+  
+  .fc-more-popover .fc-event-container {
+	padding: 10px; }
+  
+  /* Now Indicator
+  --------------------------------------------------------------------------------------------------*/
+  .fc-now-indicator {
+	position: absolute;
+	border: 0 solid red; }
+  
+  /* Toolbar
+  --------------------------------------------------------------------------------------------------*/
+  .fc-toolbar {
+	text-align: center;
+	margin-bottom: 1em; }
+  
+  .fc-toolbar .fc-left {
+	float: left; }
+  
+  .fc-toolbar .fc-right {
+	float: right; }
+  
+  .fc-toolbar .fc-center {
+	display: inline-block; }
+  
+  /* the things within each left/right/center section */
+  .fc .fc-toolbar > * > * {
+	/* extra precedence to override button border margins */
+	float: left;
+	margin-left: .75em; }
+  
+  /* the first thing within each left/center/right section */
+  .fc .fc-toolbar > * > :first-child {
+	/* extra precedence to override button border margins */
+	margin-left: 0; }
+  
+  /* title text */
+  .fc-toolbar h2 {
+	margin: 0; }
+  
+  /* button layering (for border precedence) */
+  .fc-toolbar button {
+	position: relative; }
+  
+  .fc-toolbar .fc-state-hover,
+  .fc-toolbar .ui-state-hover {
+	z-index: 2; }
+  
+  .fc-toolbar .fc-state-down {
+	z-index: 3; }
+  
+  .fc-toolbar .fc-state-active,
+  .fc-toolbar .ui-state-active {
+	z-index: 4; }
+  
+  .fc-toolbar button:focus {
+	z-index: 5; }
+  
+  /* View Structure
+  --------------------------------------------------------------------------------------------------*/
+  /* undo twitter bootstrap's box-sizing rules. normalizes positioning techniques */
+  /* don't do this for the toolbar because we'll want bootstrap to style those buttons as some pt */
+  .fc-view-container *,
+  .fc-view-container *:before,
+  .fc-view-container *:after {
+	box-sizing: content-box; }
+  
+  .fc-view,
+  .fc-view > table {
+	/* so dragged elements can be above the view's main element */
+	position: relative;
+	z-index: 1; }
+  
+  /* BasicView
+  --------------------------------------------------------------------------------------------------*/
+  /* day row structure */
+  .fc-basicWeek-view .fc-content-skeleton,
+  .fc-basicDay-view .fc-content-skeleton {
+	/* we are sure there are no day numbers in these views, so... */
+	padding-top: 1px;
+	/* add a pixel to make sure there are 2px padding above events */
+	padding-bottom: 1em;
+	/* ensure a space at bottom of cell for user selecting/clicking */ }
+  
+  .fc-basic-view .fc-body .fc-row {
+	min-height: 4em;
+	/* ensure that all rows are at least this tall */ }
+  
+  /* a "rigid" row will take up a constant amount of height because content-skeleton is absolute */
+  .fc-row.fc-rigid {
+	overflow: hidden; }
+  
+  .fc-row.fc-rigid .fc-content-skeleton {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0; }
+  
+  /* week and day number styling */
+  .fc-basic-view .fc-week-number,
+  .fc-basic-view .fc-day-number {
+	padding: 0 2px; }
+  
+  .fc-basic-view td.fc-week-number span,
+  .fc-basic-view td.fc-day-number {
+	padding-top: 2px;
+	padding-bottom: 2px; }
+  
+  .fc-basic-view .fc-week-number {
+	text-align: center; }
+  
+  .fc-basic-view .fc-week-number span {
+	/* work around the way we do column resizing and ensure a minimum width */
+	display: inline-block;
+	min-width: 1.25em; }
+  
+  .fc-ltr .fc-basic-view .fc-day-number {
+	text-align: right; }
+  
+  .fc-rtl .fc-basic-view .fc-day-number {
+	text-align: left; }
+  
+  .fc-day-number.fc-other-month {
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+	/* for IE */
+	/* opacity with small font can sometimes look too faded
+	   might want to set the 'color' property instead
+	   making day-numbers bold also fixes the problem */ }
+  
+  /* AgendaView all-day area
+  --------------------------------------------------------------------------------------------------*/
+  .fc-agenda-view .fc-day-grid {
+	position: relative;
+	z-index: 2;
+	/* so the "more.." popover will be over the time grid */ }
+  
+  .fc-agenda-view .fc-day-grid .fc-row {
+	min-height: 3em;
+	/* all-day section will never get shorter than this */ }
+  
+  .fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton {
+	padding-top: 1px;
+	/* add a pixel to make sure there are 2px padding above events */
+	padding-bottom: 1em;
+	/* give space underneath events for clicking/selecting days */ }
+  
+  /* TimeGrid axis running down the side (for both the all-day area and the slot area)
+  --------------------------------------------------------------------------------------------------*/
+  .fc .fc-axis {
+	/* .fc to overcome default cell styles */
+	vertical-align: middle;
+	padding: 0 4px;
+	white-space: nowrap; }
+  
+  .fc-ltr .fc-axis {
+	text-align: right; }
+  
+  .fc-rtl .fc-axis {
+	text-align: left; }
+  
+  .ui-widget td.fc-axis {
+	font-weight: normal;
+	/* overcome jqui theme making it bold */ }
+  
+  /* TimeGrid Structure
+  --------------------------------------------------------------------------------------------------*/
+  .fc-time-grid-container,
+  .fc-time-grid {
+	/* so slats/bg/content/etc positions get scoped within here */
+	position: relative;
+	z-index: 1; }
+  
+  .fc-time-grid {
+	min-height: 100%;
+	/* so if height setting is 'auto', .fc-bg stretches to fill height */ }
+  
+  .fc-time-grid table {
+	/* don't put outer borders on slats/bg/content/etc */
+	border: 0 hidden transparent; }
+  
+  .fc-time-grid > .fc-bg {
+	z-index: 1; }
+  
+  .fc-time-grid .fc-slats,
+  .fc-time-grid > hr {
+	/* the <hr> AgendaView injects when grid is shorter than scroller */
+	position: relative;
+	z-index: 2; }
+  
+  .fc-time-grid .fc-content-col {
+	position: relative;
+	/* because now-indicator lives directly inside */ }
+  
+  .fc-time-grid .fc-content-skeleton {
+	position: absolute;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	right: 0; }
+  
+  /* divs within a cell within the fc-content-skeleton */
+  .fc-time-grid .fc-business-container {
+	position: relative;
+	z-index: 1; }
+  
+  .fc-time-grid .fc-bgevent-container {
+	position: relative;
+	z-index: 2; }
+  
+  .fc-time-grid .fc-highlight-container {
+	position: relative;
+	z-index: 3; }
+  
+  .fc-time-grid .fc-event-container {
+	position: relative;
+	z-index: 4; }
+  
+  .fc-time-grid .fc-now-indicator-line {
+	z-index: 5; }
+  
+  .fc-time-grid .fc-helper-container {
+	/* also is fc-event-container */
+	position: relative;
+	z-index: 6; }
+  
+  /* TimeGrid Slats (lines that run horizontally)
+  --------------------------------------------------------------------------------------------------*/
+  .fc-time-grid .fc-slats td {
+	height: 1.5em;
+	border-bottom: 0;
+	/* each cell is responsible for its top border */ }
+  
+  .fc-time-grid .fc-slats .fc-minor td {
+	border-top-style: dotted; }
+  
+  .fc-time-grid .fc-slats .ui-widget-content {
+	/* for jqui theme */
+	background: none;
+	/* see through to fc-bg */ }
+  
+  /* TimeGrid Highlighting Slots
+  --------------------------------------------------------------------------------------------------*/
+  .fc-time-grid .fc-highlight-container {
+	/* a div within a cell within the fc-highlight-skeleton */
+	position: relative;
+	/* scopes the left/right of the fc-highlight to be in the column */ }
+  
+  .fc-time-grid .fc-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	/* top and bottom will be in by JS */ }
+  
+  /* TimeGrid Event Containment
+  --------------------------------------------------------------------------------------------------*/
+  .fc-ltr .fc-time-grid .fc-event-container {
+	/* space on the sides of events for LTR (default) */
+	margin: 0 2.5% 0 2px; }
+  
+  .fc-rtl .fc-time-grid .fc-event-container {
+	/* space on the sides of events for RTL */
+	margin: 0 2px 0 2.5%; }
+  
+  .fc-time-grid .fc-event,
+  .fc-time-grid .fc-bgevent {
+	position: absolute;
+	z-index: 1;
+	/* scope inner z-index's */ }
+  
+  .fc-time-grid .fc-bgevent {
+	/* background events always span full width */
+	left: 0;
+	right: 0; }
+  
+  /* Generic Vertical Event
+  --------------------------------------------------------------------------------------------------*/
+  .fc-v-event.fc-not-start {
+	/* events that are continuing from another day */
+	/* replace space made by the top border with padding */
+	border-top-width: 0;
+	padding-top: 1px;
+	/* remove top rounded corners */
+	border-top-left-radius: 0;
+	border-top-right-radius: 0; }
+  
+  .fc-v-event.fc-not-end {
+	/* replace space made by the top border with padding */
+	border-bottom-width: 0;
+	padding-bottom: 1px;
+	/* remove bottom rounded corners */
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0; }
+  
+  /* TimeGrid Event Styling
+  ----------------------------------------------------------------------------------------------------
+  We use the full "fc-time-grid-event" class instead of using descendants because the event won't
+  be a descendant of the grid when it is being dragged.
+  */
+  .fc-time-grid-event {
+	overflow: hidden;
+	/* don't let the bg flow over rounded corners */ }
+  
+  .fc-time-grid-event .fc-time,
+  .fc-time-grid-event .fc-title {
+	padding: 0 1px; }
+  
+  .fc-time-grid-event .fc-time {
+	font-size: .85em;
+	white-space: nowrap; }
+  
+  /* short mode, where time and title are on the same line */
+  .fc-time-grid-event.fc-short .fc-content {
+	/* don't wrap to second line (now that contents will be inline) */
+	white-space: nowrap; }
+  
+  .fc-time-grid-event.fc-short .fc-time,
+  .fc-time-grid-event.fc-short .fc-title {
+	/* put the time and title on the same line */
+	display: inline-block;
+	vertical-align: top; }
+  
+  .fc-time-grid-event.fc-short .fc-time span {
+	display: none;
+	/* don't display the full time text... */ }
+  
+  .fc-time-grid-event.fc-short .fc-time:before {
+	content: attr(data-start);
+	/* ...instead, display only the start time */ }
+  
+  .fc-time-grid-event.fc-short .fc-time:after {
+	content: "\000A0-\000A0";
+	/* seperate with a dash, wrapped in nbsp's */ }
+  
+  .fc-time-grid-event.fc-short .fc-title {
+	font-size: .85em;
+	/* make the title text the same size as the time */
+	padding: 0;
+	/* undo padding from above */ }
+  
+  /* resizer */
+  .fc-time-grid-event .fc-resizer {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 8px;
+	overflow: hidden;
+	line-height: 8px;
+	font-size: 11px;
+	font-family: monospace;
+	text-align: center;
+	cursor: s-resize; }
+  
+  .fc-time-grid-event .fc-resizer:after {
+	content: "="; }
+  
+  /* Now Indicator
+  --------------------------------------------------------------------------------------------------*/
+  .fc-time-grid .fc-now-indicator-line {
+	border-top-width: 1px;
+	left: 0;
+	right: 0; }
+  
+  /* arrow on axis */
+  .fc-time-grid .fc-now-indicator-arrow {
+	margin-top: -5px;
+	/* vertically center on top coordinate */ }
+  
+  .fc-ltr .fc-time-grid .fc-now-indicator-arrow {
+	left: 0;
+	/* triangle pointing right... */
+	border-width: 5px 0 5px 6px;
+	border-top-color: transparent;
+	border-bottom-color: transparent; }
+  
+  .fc-rtl .fc-time-grid .fc-now-indicator-arrow {
+	right: 0;
+	/* triangle pointing left... */
+	border-width: 5px 6px 5px 0;
+	border-top-color: transparent;
+	border-bottom-color: transparent; }
+  
+/*
+ *
+ *
+ *
+ */
+/*!
+ *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+ @font-face {
+	font-family: 'FontAwesome';
+	src: url("/files/14/s46/fonts/fontawesome-webfont.eot?v=4.5.0");
+	src: url("/files/14/s46/fonts/fontawesome-webfont.eot?#iefix&v=4.5.0") format("embedded-opentype"), url("/files/14/s46/fonts/fontawesome-webfont.woff2?v=4.5.0") format("woff2"), url("/files/14/s46/fonts/fontawesome-webfont.woff?v=4.5.0") format("woff"), url("/files/14/s46/fonts/fontawesome-webfont.ttf?v=4.5.0") format("truetype"), url("/files/14/s46/fonts/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format("svg");
+	font-weight: normal;
+	font-style: normal; }
+  .fa {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale; }
+  
+  /* makes the font 33% larger relative to the icon container */
+  .fa-lg {
+	font-size: 1.33333em;
+	line-height: 0.75em;
+	vertical-align: -15%; }
+  
+  .fa-2x {
+	font-size: 2em; }
+  
+  .fa-3x {
+	font-size: 3em; }
+  
+  .fa-4x {
+	font-size: 4em; }
+  
+  .fa-5x {
+	font-size: 5em; }
+  
+  .fa-fw {
+	width: 1.28571em;
+	text-align: center; }
+  
+  .fa-ul {
+	padding-left: 0;
+	margin-left: 2.14286em;
+	list-style-type: none; }
+	.fa-ul > li {
+	  position: relative; }
+  
+  .fa-li {
+	position: absolute;
+	left: -2.14286em;
+	width: 2.14286em;
+	top: 0.14286em;
+	text-align: center; }
+	.fa-li.fa-lg {
+	  left: -1.85714em; }
+  
+  .fa-border {
+	padding: .2em .25em .15em;
+	border: solid 0.08em #eee;
+	border-radius: .1em; }
+  
+  .fa-pull-left {
+	float: left; }
+  
+  .fa-pull-right {
+	float: right; }
+  
+  .fa.fa-pull-left {
+	margin-right: .3em; }
+  .fa.fa-pull-right {
+	margin-left: .3em; }
+  
+  /* Deprecated as of 4.4.0 */
+  .pull-right {
+	float: right; }
+  
+  .pull-left {
+	float: left; }
+  
+  .fa.pull-left {
+	margin-right: .3em; }
+  .fa.pull-right {
+	margin-left: .3em; }
+  
+  .fa-spin {
+	-webkit-animation: fa-spin 2s infinite linear;
+	animation: fa-spin 2s infinite linear; }
+  
+  .fa-pulse {
+	-webkit-animation: fa-spin 1s infinite steps(8);
+	animation: fa-spin 1s infinite steps(8); }
+  
+  @-webkit-keyframes fa-spin {
+	0% {
+	  -webkit-transform: rotate(0deg);
+	  transform: rotate(0deg); }
+	100% {
+	  -webkit-transform: rotate(359deg);
+	  transform: rotate(359deg); } }
+  @keyframes fa-spin {
+	0% {
+	  -webkit-transform: rotate(0deg);
+	  transform: rotate(0deg); }
+	100% {
+	  -webkit-transform: rotate(359deg);
+	  transform: rotate(359deg); } }
+  .fa-rotate-90 {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg); }
+  
+  .fa-rotate-180 {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg); }
+  
+  .fa-rotate-270 {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+	-webkit-transform: rotate(270deg);
+	transform: rotate(270deg); }
+  
+  .fa-flip-horizontal {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+	-webkit-transform: scale(-1, 1);
+	transform: scale(-1, 1); }
+  
+  .fa-flip-vertical {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+	-webkit-transform: scale(1, -1);
+	transform: scale(1, -1); }
+  
+  :root .fa-rotate-90,
+  :root .fa-rotate-180,
+  :root .fa-rotate-270,
+  :root .fa-flip-horizontal,
+  :root .fa-flip-vertical {
+	-webkit-filter: none;
+	filter: none; }
+  
+  .fa-stack {
+	position: relative;
+	display: inline-block;
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	vertical-align: middle; }
+  
+  .fa-stack-1x, .fa-stack-2x {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	text-align: center; }
+  
+  .fa-stack-1x {
+	line-height: inherit; }
+  
+  .fa-stack-2x {
+	font-size: 2em; }
+  
+  .fa-inverse {
+	color: #fff; }
+  
+  /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+	 readers do not read off random characters that represent icons */
+  .fa-glass:before {
+	content: ""; }
+  
+  .fa-music:before {
+	content: ""; }
+  
+  .fa-search:before {
+	content: ""; }
+  
+  .fa-envelope-o:before {
+	content: ""; }
+  
+  .fa-heart:before {
+	content: ""; }
+  
+  .fa-star:before {
+	content: ""; }
+  
+  .fa-star-o:before {
+	content: ""; }
+  
+  .fa-user:before {
+	content: ""; }
+  
+  .fa-film:before {
+	content: ""; }
+  
+  .fa-th-large:before {
+	content: ""; }
+  
+  .fa-th:before {
+	content: ""; }
+  
+  .fa-th-list:before {
+	content: ""; }
+  
+  .fa-check:before {
+	content: ""; }
+  
+  .fa-remove:before,
+  .fa-close:before,
+  .fa-times:before {
+	content: ""; }
+  
+  .fa-search-plus:before {
+	content: ""; }
+  
+  .fa-search-minus:before {
+	content: ""; }
+  
+  .fa-power-off:before {
+	content: ""; }
+  
+  .fa-signal:before {
+	content: ""; }
+  
+  .fa-gear:before,
+  .fa-cog:before {
+	content: ""; }
+  
+  .fa-trash-o:before {
+	content: ""; }
+  
+  .fa-home:before {
+	content: ""; }
+  
+  .fa-file-o:before {
+	content: ""; }
+  
+  .fa-clock-o:before {
+	content: ""; }
+  
+  .fa-road:before {
+	content: ""; }
+  
+  .fa-download:before {
+	content: ""; }
+  
+  .fa-arrow-circle-o-down:before {
+	content: ""; }
+  
+  .fa-arrow-circle-o-up:before {
+	content: ""; }
+  
+  .fa-inbox:before {
+	content: ""; }
+  
+  .fa-play-circle-o:before {
+	content: ""; }
+  
+  .fa-rotate-right:before,
+  .fa-repeat:before {
+	content: ""; }
+  
+  .fa-refresh:before {
+	content: ""; }
+  
+  .fa-list-alt:before {
+	content: ""; }
+  
+  .fa-lock:before {
+	content: ""; }
+  
+  .fa-flag:before {
+	content: ""; }
+  
+  .fa-headphones:before {
+	content: ""; }
+  
+  .fa-volume-off:before {
+	content: ""; }
+  
+  .fa-volume-down:before {
+	content: ""; }
+  
+  .fa-volume-up:before {
+	content: ""; }
+  
+  .fa-qrcode:before {
+	content: ""; }
+  
+  .fa-barcode:before {
+	content: ""; }
+  
+  .fa-tag:before {
+	content: ""; }
+  
+  .fa-tags:before {
+	content: ""; }
+  
+  .fa-book:before {
+	content: ""; }
+  
+  .fa-bookmark:before {
+	content: ""; }
+  
+  .fa-print:before {
+	content: ""; }
+  
+  .fa-camera:before {
+	content: ""; }
+  
+  .fa-font:before {
+	content: ""; }
+  
+  .fa-bold:before {
+	content: ""; }
+  
+  .fa-italic:before {
+	content: ""; }
+  
+  .fa-text-height:before {
+	content: ""; }
+  
+  .fa-text-width:before {
+	content: ""; }
+  
+  .fa-align-left:before {
+	content: ""; }
+  
+  .fa-align-center:before {
+	content: ""; }
+  
+  .fa-align-right:before {
+	content: ""; }
+  
+  .fa-align-justify:before {
+	content: ""; }
+  
+  .fa-list:before {
+	content: ""; }
+  
+  .fa-dedent:before,
+  .fa-outdent:before {
+	content: ""; }
+  
+  .fa-indent:before {
+	content: ""; }
+  
+  .fa-video-camera:before {
+	content: ""; }
+  
+  .fa-photo:before,
+  .fa-image:before,
+  .fa-picture-o:before {
+	content: ""; }
+  
+  .fa-pencil:before {
+	content: ""; }
+  
+  .fa-map-marker:before {
+	content: ""; }
+  
+  .fa-adjust:before {
+	content: ""; }
+  
+  .fa-tint:before {
+	content: ""; }
+  
+  .fa-edit:before,
+  .fa-pencil-square-o:before {
+	content: ""; }
+  
+  .fa-share-square-o:before {
+	content: ""; }
+  
+  .fa-check-square-o:before {
+	content: ""; }
+  
+  .fa-arrows:before {
+	content: ""; }
+  
+  .fa-step-backward:before {
+	content: ""; }
+  
+  .fa-fast-backward:before {
+	content: ""; }
+  
+  .fa-backward:before {
+	content: ""; }
+  
+  .fa-play:before {
+	content: ""; }
+  
+  .fa-pause:before {
+	content: ""; }
+  
+  .fa-stop:before {
+	content: ""; }
+  
+  .fa-forward:before {
+	content: ""; }
+  
+  .fa-fast-forward:before {
+	content: ""; }
+  
+  .fa-step-forward:before {
+	content: ""; }
+  
+  .fa-eject:before {
+	content: ""; }
+  
+  .fa-chevron-left:before {
+	content: ""; }
+  
+  .fa-chevron-right:before {
+	content: ""; }
+  
+  .fa-plus-circle:before {
+	content: ""; }
+  
+  .fa-minus-circle:before {
+	content: ""; }
+  
+  .fa-times-circle:before {
+	content: ""; }
+  
+  .fa-check-circle:before {
+	content: ""; }
+  
+  .fa-question-circle:before {
+	content: ""; }
+  
+  .fa-info-circle:before {
+	content: ""; }
+  
+  .fa-crosshairs:before {
+	content: ""; }
+  
+  .fa-times-circle-o:before {
+	content: ""; }
+  
+  .fa-check-circle-o:before {
+	content: ""; }
+  
+  .fa-ban:before {
+	content: ""; }
+  
+  .fa-arrow-left:before {
+	content: ""; }
+  
+  .fa-arrow-right:before {
+	content: ""; }
+  
+  .fa-arrow-up:before {
+	content: ""; }
+  
+  .fa-arrow-down:before {
+	content: ""; }
+  
+  .fa-mail-forward:before,
+  .fa-share:before {
+	content: ""; }
+  
+  .fa-expand:before {
+	content: ""; }
+  
+  .fa-compress:before {
+	content: ""; }
+  
+  .fa-plus:before {
+	content: ""; }
+  
+  .fa-minus:before {
+	content: ""; }
+  
+  .fa-asterisk:before {
+	content: ""; }
+  
+  .fa-exclamation-circle:before {
+	content: ""; }
+  
+  .fa-gift:before {
+	content: ""; }
+  
+  .fa-leaf:before {
+	content: ""; }
+  
+  .fa-fire:before {
+	content: ""; }
+  
+  .fa-eye:before {
+	content: ""; }
+  
+  .fa-eye-slash:before {
+	content: ""; }
+  
+  .fa-warning:before,
+  .fa-exclamation-triangle:before {
+	content: ""; }
+  
+  .fa-plane:before {
+	content: ""; }
+  
+  .fa-calendar:before {
+	content: ""; }
+  
+  .fa-random:before {
+	content: ""; }
+  
+  .fa-comment:before {
+	content: ""; }
+  
+  .fa-magnet:before {
+	content: ""; }
+  
+  .fa-chevron-up:before {
+	content: ""; }
+  
+  .fa-chevron-down:before {
+	content: ""; }
+  
+  .fa-retweet:before {
+	content: ""; }
+  
+  .fa-shopping-cart:before {
+	content: ""; }
+  
+  .fa-folder:before {
+	content: ""; }
+  
+  .fa-folder-open:before {
+	content: ""; }
+  
+  .fa-arrows-v:before {
+	content: ""; }
+  
+  .fa-arrows-h:before {
+	content: ""; }
+  
+  .fa-bar-chart-o:before,
+  .fa-bar-chart:before {
+	content: ""; }
+  
+  .fa-twitter-square:before {
+	content: ""; }
+  
+  .fa-facebook-square:before {
+	content: ""; }
+  
+  .fa-camera-retro:before {
+	content: ""; }
+  
+  .fa-key:before {
+	content: ""; }
+  
+  .fa-gears:before,
+  .fa-cogs:before {
+	content: ""; }
+  
+  .fa-comments:before {
+	content: ""; }
+  
+  .fa-thumbs-o-up:before {
+	content: ""; }
+  
+  .fa-thumbs-o-down:before {
+	content: ""; }
+  
+  .fa-star-half:before {
+	content: ""; }
+  
+  .fa-heart-o:before {
+	content: ""; }
+  
+  .fa-sign-out:before {
+	content: ""; }
+  
+  .fa-linkedin-square:before {
+	content: ""; }
+  
+  .fa-thumb-tack:before {
+	content: ""; }
+  
+  .fa-external-link:before {
+	content: ""; }
+  
+  .fa-sign-in:before {
+	content: ""; }
+  
+  .fa-trophy:before {
+	content: ""; }
+  
+  .fa-github-square:before {
+	content: ""; }
+  
+  .fa-upload:before {
+	content: ""; }
+  
+  .fa-lemon-o:before {
+	content: ""; }
+  
+  .fa-phone:before {
+	content: ""; }
+  
+  .fa-square-o:before {
+	content: ""; }
+  
+  .fa-bookmark-o:before {
+	content: ""; }
+  
+  .fa-phone-square:before {
+	content: ""; }
+  
+  .fa-twitter:before {
+	content: ""; }
+  
+  .fa-facebook-f:before,
+  .fa-facebook:before {
+	content: ""; }
+  
+  .fa-github:before {
+	content: ""; }
+  
+  .fa-unlock:before {
+	content: ""; }
+  
+  .fa-credit-card:before {
+	content: ""; }
+  
+  .fa-feed:before,
+  .fa-rss:before {
+	content: ""; }
+  
+  .fa-hdd-o:before {
+	content: ""; }
+  
+  .fa-bullhorn:before {
+	content: ""; }
+  
+  .fa-bell:before {
+	content: ""; }
+  
+  .fa-certificate:before {
+	content: ""; }
+  
+  .fa-hand-o-right:before {
+	content: ""; }
+  
+  .fa-hand-o-left:before {
+	content: ""; }
+  
+  .fa-hand-o-up:before {
+	content: ""; }
+  
+  .fa-hand-o-down:before {
+	content: ""; }
+  
+  .fa-arrow-circle-left:before {
+	content: ""; }
+  
+  .fa-arrow-circle-right:before {
+	content: ""; }
+  
+  .fa-arrow-circle-up:before {
+	content: ""; }
+  
+  .fa-arrow-circle-down:before {
+	content: ""; }
+  
+  .fa-globe:before {
+	content: ""; }
+  
+  .fa-wrench:before {
+	content: ""; }
+  
+  .fa-tasks:before {
+	content: ""; }
+  
+  .fa-filter:before {
+	content: ""; }
+  
+  .fa-briefcase:before {
+	content: ""; }
+  
+  .fa-arrows-alt:before {
+	content: ""; }
+  
+  .fa-group:before,
+  .fa-users:before {
+	content: ""; }
+  
+  .fa-chain:before,
+  .fa-link:before {
+	content: ""; }
+  
+  .fa-cloud:before {
+	content: ""; }
+  
+  .fa-flask:before {
+	content: ""; }
+  
+  .fa-cut:before,
+  .fa-scissors:before {
+	content: ""; }
+  
+  .fa-copy:before,
+  .fa-files-o:before {
+	content: ""; }
+  
+  .fa-paperclip:before {
+	content: ""; }
+  
+  .fa-save:before,
+  .fa-floppy-o:before {
+	content: ""; }
+  
+  .fa-square:before {
+	content: ""; }
+  
+  .fa-navicon:before,
+  .fa-reorder:before,
+  .fa-bars:before {
+	content: ""; }
+  
+  .fa-list-ul:before {
+	content: ""; }
+  
+  .fa-list-ol:before {
+	content: ""; }
+  
+  .fa-strikethrough:before {
+	content: ""; }
+  
+  .fa-underline:before {
+	content: ""; }
+  
+  .fa-table:before {
+	content: ""; }
+  
+  .fa-magic:before {
+	content: ""; }
+  
+  .fa-truck:before {
+	content: ""; }
+  
+  .fa-pinterest:before {
+	content: ""; }
+  
+  .fa-pinterest-square:before {
+	content: ""; }
+  
+  .fa-google-plus-square:before {
+	content: ""; }
+  
+  .fa-google-plus:before {
+	content: ""; }
+  
+  .fa-money:before {
+	content: ""; }
+  
+  .fa-caret-down:before {
+	content: ""; }
+  
+  .fa-caret-up:before {
+	content: ""; }
+  
+  .fa-caret-left:before {
+	content: ""; }
+  
+  .fa-caret-right:before {
+	content: ""; }
+  
+  .fa-columns:before {
+	content: ""; }
+  
+  .fa-unsorted:before,
+  .fa-sort:before {
+	content: ""; }
+  
+  .fa-sort-down:before,
+  .fa-sort-desc:before {
+	content: ""; }
+  
+  .fa-sort-up:before,
+  .fa-sort-asc:before {
+	content: ""; }
+  
+  .fa-envelope:before {
+	content: ""; }
+  
+  .fa-linkedin:before {
+	content: ""; }
+  
+  .fa-rotate-left:before,
+  .fa-undo:before {
+	content: ""; }
+  
+  .fa-legal:before,
+  .fa-gavel:before {
+	content: ""; }
+  
+  .fa-dashboard:before,
+  .fa-tachometer:before {
+	content: ""; }
+  
+  .fa-comment-o:before {
+	content: ""; }
+  
+  .fa-comments-o:before {
+	content: ""; }
+  
+  .fa-flash:before,
+  .fa-bolt:before {
+	content: ""; }
+  
+  .fa-sitemap:before {
+	content: ""; }
+  
+  .fa-umbrella:before {
+	content: ""; }
+  
+  .fa-paste:before,
+  .fa-clipboard:before {
+	content: ""; }
+  
+  .fa-lightbulb-o:before {
+	content: ""; }
+  
+  .fa-exchange:before {
+	content: ""; }
+  
+  .fa-cloud-download:before {
+	content: ""; }
+  
+  .fa-cloud-upload:before {
+	content: ""; }
+  
+  .fa-user-md:before {
+	content: ""; }
+  
+  .fa-stethoscope:before {
+	content: ""; }
+  
+  .fa-suitcase:before {
+	content: ""; }
+  
+  .fa-bell-o:before {
+	content: ""; }
+  
+  .fa-coffee:before {
+	content: ""; }
+  
+  .fa-cutlery:before {
+	content: ""; }
+  
+  .fa-file-text-o:before {
+	content: ""; }
+  
+  .fa-building-o:before {
+	content: ""; }
+  
+  .fa-hospital-o:before {
+	content: ""; }
+  
+  .fa-ambulance:before {
+	content: ""; }
+  
+  .fa-medkit:before {
+	content: ""; }
+  
+  .fa-fighter-jet:before {
+	content: ""; }
+  
+  .fa-beer:before {
+	content: ""; }
+  
+  .fa-h-square:before {
+	content: ""; }
+  
+  .fa-plus-square:before {
+	content: ""; }
+  
+  .fa-angle-double-left:before {
+	content: ""; }
+  
+  .fa-angle-double-right:before {
+	content: ""; }
+  
+  .fa-angle-double-up:before {
+	content: ""; }
+  
+  .fa-angle-double-down:before {
+	content: ""; }
+  
+  .fa-angle-left:before {
+	content: ""; }
+  
+  .fa-angle-right:before {
+	content: ""; }
+  
+  .fa-angle-up:before {
+	content: ""; }
+  
+  .fa-angle-down:before {
+	content: ""; }
+  
+  .fa-desktop:before {
+	content: ""; }
+  
+  .fa-laptop:before {
+	content: ""; }
+  
+  .fa-tablet:before {
+	content: ""; }
+  
+  .fa-mobile-phone:before,
+  .fa-mobile:before {
+	content: ""; }
+  
+  .fa-circle-o:before {
+	content: ""; }
+  
+  .fa-quote-left:before {
+	content: ""; }
+  
+  .fa-quote-right:before {
+	content: ""; }
+  
+  .fa-spinner:before {
+	content: ""; }
+  
+  .fa-circle:before {
+	content: ""; }
+  
+  .fa-mail-reply:before,
+  .fa-reply:before {
+	content: ""; }
+  
+  .fa-github-alt:before {
+	content: ""; }
+  
+  .fa-folder-o:before {
+	content: ""; }
+  
+  .fa-folder-open-o:before {
+	content: ""; }
+  
+  .fa-smile-o:before {
+	content: ""; }
+  
+  .fa-frown-o:before {
+	content: ""; }
+  
+  .fa-meh-o:before {
+	content: ""; }
+  
+  .fa-gamepad:before {
+	content: ""; }
+  
+  .fa-keyboard-o:before {
+	content: ""; }
+  
+  .fa-flag-o:before {
+	content: ""; }
+  
+  .fa-flag-checkered:before {
+	content: ""; }
+  
+  .fa-terminal:before {
+	content: ""; }
+  
+  .fa-code:before {
+	content: ""; }
+  
+  .fa-mail-reply-all:before,
+  .fa-reply-all:before {
+	content: ""; }
+  
+  .fa-star-half-empty:before,
+  .fa-star-half-full:before,
+  .fa-star-half-o:before {
+	content: ""; }
+  
+  .fa-location-arrow:before {
+	content: ""; }
+  
+  .fa-crop:before {
+	content: ""; }
+  
+  .fa-code-fork:before {
+	content: ""; }
+  
+  .fa-unlink:before,
+  .fa-chain-broken:before {
+	content: ""; }
+  
+  .fa-question:before {
+	content: ""; }
+  
+  .fa-info:before {
+	content: ""; }
+  
+  .fa-exclamation:before {
+	content: ""; }
+  
+  .fa-superscript:before {
+	content: ""; }
+  
+  .fa-subscript:before {
+	content: ""; }
+  
+  .fa-eraser:before {
+	content: ""; }
+  
+  .fa-puzzle-piece:before {
+	content: ""; }
+  
+  .fa-microphone:before {
+	content: ""; }
+  
+  .fa-microphone-slash:before {
+	content: ""; }
+  
+  .fa-shield:before {
+	content: ""; }
+  
+  .fa-calendar-o:before {
+	content: ""; }
+  
+  .fa-fire-extinguisher:before {
+	content: ""; }
+  
+  .fa-rocket:before {
+	content: ""; }
+  
+  .fa-maxcdn:before {
+	content: ""; }
+  
+  .fa-chevron-circle-left:before {
+	content: ""; }
+  
+  .fa-chevron-circle-right:before {
+	content: ""; }
+  
+  .fa-chevron-circle-up:before {
+	content: ""; }
+  
+  .fa-chevron-circle-down:before {
+	content: ""; }
+  
+  .fa-html5:before {
+	content: ""; }
+  
+  .fa-css3:before {
+	content: ""; }
+  
+  .fa-anchor:before {
+	content: ""; }
+  
+  .fa-unlock-alt:before {
+	content: ""; }
+  
+  .fa-bullseye:before {
+	content: ""; }
+  
+  .fa-ellipsis-h:before {
+	content: ""; }
+  
+  .fa-ellipsis-v:before {
+	content: ""; }
+  
+  .fa-rss-square:before {
+	content: ""; }
+  
+  .fa-play-circle:before {
+	content: ""; }
+  
+  .fa-ticket:before {
+	content: ""; }
+  
+  .fa-minus-square:before {
+	content: ""; }
+  
+  .fa-minus-square-o:before {
+	content: ""; }
+  
+  .fa-level-up:before {
+	content: ""; }
+  
+  .fa-level-down:before {
+	content: ""; }
+  
+  .fa-check-square:before {
+	content: ""; }
+  
+  .fa-pencil-square:before {
+	content: ""; }
+  
+  .fa-external-link-square:before {
+	content: ""; }
+  
+  .fa-share-square:before {
+	content: ""; }
+  
+  .fa-compass:before {
+	content: ""; }
+  
+  .fa-toggle-down:before,
+  .fa-caret-square-o-down:before {
+	content: ""; }
+  
+  .fa-toggle-up:before,
+  .fa-caret-square-o-up:before {
+	content: ""; }
+  
+  .fa-toggle-right:before,
+  .fa-caret-square-o-right:before {
+	content: ""; }
+  
+  .fa-euro:before,
+  .fa-eur:before {
+	content: ""; }
+  
+  .fa-gbp:before {
+	content: ""; }
+  
+  .fa-dollar:before,
+  .fa-usd:before {
+	content: ""; }
+  
+  .fa-rupee:before,
+  .fa-inr:before {
+	content: ""; }
+  
+  .fa-cny:before,
+  .fa-rmb:before,
+  .fa-yen:before,
+  .fa-jpy:before {
+	content: ""; }
+  
+  .fa-ruble:before,
+  .fa-rouble:before,
+  .fa-rub:before {
+	content: ""; }
+  
+  .fa-won:before,
+  .fa-krw:before {
+	content: ""; }
+  
+  .fa-bitcoin:before,
+  .fa-btc:before {
+	content: ""; }
+  
+  .fa-file:before {
+	content: ""; }
+  
+  .fa-file-text:before {
+	content: ""; }
+  
+  .fa-sort-alpha-asc:before {
+	content: ""; }
+  
+  .fa-sort-alpha-desc:before {
+	content: ""; }
+  
+  .fa-sort-amount-asc:before {
+	content: ""; }
+  
+  .fa-sort-amount-desc:before {
+	content: ""; }
+  
+  .fa-sort-numeric-asc:before {
+	content: ""; }
+  
+  .fa-sort-numeric-desc:before {
+	content: ""; }
+  
+  .fa-thumbs-up:before {
+	content: ""; }
+  
+  .fa-thumbs-down:before {
+	content: ""; }
+  
+  .fa-youtube-square:before {
+	content: ""; }
+  
+  .fa-youtube:before {
+	content: ""; }
+  
+  .fa-xing:before {
+	content: ""; }
+  
+  .fa-xing-square:before {
+	content: ""; }
+  
+  .fa-youtube-play:before {
+	content: ""; }
+  
+  .fa-dropbox:before {
+	content: ""; }
+  
+  .fa-stack-overflow:before {
+	content: ""; }
+  
+  .fa-instagram:before {
+	content: ""; }
+  
+  .fa-flickr:before {
+	content: ""; }
+  
+  .fa-adn:before {
+	content: ""; }
+  
+  .fa-bitbucket:before {
+	content: ""; }
+  
+  .fa-bitbucket-square:before {
+	content: ""; }
+  
+  .fa-tumblr:before {
+	content: ""; }
+  
+  .fa-tumblr-square:before {
+	content: ""; }
+  
+  .fa-long-arrow-down:before {
+	content: ""; }
+  
+  .fa-long-arrow-up:before {
+	content: ""; }
+  
+  .fa-long-arrow-left:before {
+	content: ""; }
+  
+  .fa-long-arrow-right:before {
+	content: ""; }
+  
+  .fa-apple:before {
+	content: ""; }
+  
+  .fa-windows:before {
+	content: ""; }
+  
+  .fa-android:before {
+	content: ""; }
+  
+  .fa-linux:before {
+	content: ""; }
+  
+  .fa-dribbble:before {
+	content: ""; }
+  
+  .fa-skype:before {
+	content: ""; }
+  
+  .fa-foursquare:before {
+	content: ""; }
+  
+  .fa-trello:before {
+	content: ""; }
+  
+  .fa-female:before {
+	content: ""; }
+  
+  .fa-male:before {
+	content: ""; }
+  
+  .fa-gittip:before,
+  .fa-gratipay:before {
+	content: ""; }
+  
+  .fa-sun-o:before {
+	content: ""; }
+  
+  .fa-moon-o:before {
+	content: ""; }
+  
+  .fa-archive:before {
+	content: ""; }
+  
+  .fa-bug:before {
+	content: ""; }
+  
+  .fa-vk:before {
+	content: ""; }
+  
+  .fa-weibo:before {
+	content: ""; }
+  
+  .fa-renren:before {
+	content: ""; }
+  
+  .fa-pagelines:before {
+	content: ""; }
+  
+  .fa-stack-exchange:before {
+	content: ""; }
+  
+  .fa-arrow-circle-o-right:before {
+	content: ""; }
+  
+  .fa-arrow-circle-o-left:before {
+	content: ""; }
+  
+  .fa-toggle-left:before,
+  .fa-caret-square-o-left:before {
+	content: ""; }
+  
+  .fa-dot-circle-o:before {
+	content: ""; }
+  
+  .fa-wheelchair:before {
+	content: ""; }
+  
+  .fa-vimeo-square:before {
+	content: ""; }
+  
+  .fa-turkish-lira:before,
+  .fa-try:before {
+	content: ""; }
+  
+  .fa-plus-square-o:before {
+	content: ""; }
+  
+  .fa-space-shuttle:before {
+	content: ""; }
+  
+  .fa-slack:before {
+	content: ""; }
+  
+  .fa-envelope-square:before {
+	content: ""; }
+  
+  .fa-wordpress:before {
+	content: ""; }
+  
+  .fa-openid:before {
+	content: ""; }
+  
+  .fa-institution:before,
+  .fa-bank:before,
+  .fa-university:before {
+	content: ""; }
+  
+  .fa-mortar-board:before,
+  .fa-graduation-cap:before {
+	content: ""; }
+  
+  .fa-yahoo:before {
+	content: ""; }
+  
+  .fa-google:before {
+	content: ""; }
+  
+  .fa-reddit:before {
+	content: ""; }
+  
+  .fa-reddit-square:before {
+	content: ""; }
+  
+  .fa-stumbleupon-circle:before {
+	content: ""; }
+  
+  .fa-stumbleupon:before {
+	content: ""; }
+  
+  .fa-delicious:before {
+	content: ""; }
+  
+  .fa-digg:before {
+	content: ""; }
+  
+  .fa-pied-piper:before {
+	content: ""; }
+  
+  .fa-pied-piper-alt:before {
+	content: ""; }
+  
+  .fa-drupal:before {
+	content: ""; }
+  
+  .fa-joomla:before {
+	content: ""; }
+  
+  .fa-language:before {
+	content: ""; }
+  
+  .fa-fax:before {
+	content: ""; }
+  
+  .fa-building:before {
+	content: ""; }
+  
+  .fa-child:before {
+	content: ""; }
+  
+  .fa-paw:before {
+	content: ""; }
+  
+  .fa-spoon:before {
+	content: ""; }
+  
+  .fa-cube:before {
+	content: ""; }
+  
+  .fa-cubes:before {
+	content: ""; }
+  
+  .fa-behance:before {
+	content: ""; }
+  
+  .fa-behance-square:before {
+	content: ""; }
+  
+  .fa-steam:before {
+	content: ""; }
+  
+  .fa-steam-square:before {
+	content: ""; }
+  
+  .fa-recycle:before {
+	content: ""; }
+  
+  .fa-automobile:before,
+  .fa-car:before {
+	content: ""; }
+  
+  .fa-cab:before,
+  .fa-taxi:before {
+	content: ""; }
+  
+  .fa-tree:before {
+	content: ""; }
+  
+  .fa-spotify:before {
+	content: ""; }
+  
+  .fa-deviantart:before {
+	content: ""; }
+  
+  .fa-soundcloud:before {
+	content: ""; }
+  
+  .fa-database:before {
+	content: ""; }
+  
+  .fa-file-pdf-o:before {
+	content: ""; }
+  
+  .fa-file-word-o:before {
+	content: ""; }
+  
+  .fa-file-excel-o:before {
+	content: ""; }
+  
+  .fa-file-powerpoint-o:before {
+	content: ""; }
+  
+  .fa-file-photo-o:before,
+  .fa-file-picture-o:before,
+  .fa-file-image-o:before {
+	content: ""; }
+  
+  .fa-file-zip-o:before,
+  .fa-file-archive-o:before {
+	content: ""; }
+  
+  .fa-file-sound-o:before,
+  .fa-file-audio-o:before {
+	content: ""; }
+  
+  .fa-file-movie-o:before,
+  .fa-file-video-o:before {
+	content: ""; }
+  
+  .fa-file-code-o:before {
+	content: ""; }
+  
+  .fa-vine:before {
+	content: ""; }
+  
+  .fa-codepen:before {
+	content: ""; }
+  
+  .fa-jsfiddle:before {
+	content: ""; }
+  
+  .fa-life-bouy:before,
+  .fa-life-buoy:before,
+  .fa-life-saver:before,
+  .fa-support:before,
+  .fa-life-ring:before {
+	content: ""; }
+  
+  .fa-circle-o-notch:before {
+	content: ""; }
+  
+  .fa-ra:before,
+  .fa-rebel:before {
+	content: ""; }
+  
+  .fa-ge:before,
+  .fa-empire:before {
+	content: ""; }
+  
+  .fa-git-square:before {
+	content: ""; }
+  
+  .fa-git:before {
+	content: ""; }
+  
+  .fa-y-combinator-square:before,
+  .fa-yc-square:before,
+  .fa-hacker-news:before {
+	content: ""; }
+  
+  .fa-tencent-weibo:before {
+	content: ""; }
+  
+  .fa-qq:before {
+	content: ""; }
+  
+  .fa-wechat:before,
+  .fa-weixin:before {
+	content: ""; }
+  
+  .fa-send:before,
+  .fa-paper-plane:before {
+	content: ""; }
+  
+  .fa-send-o:before,
+  .fa-paper-plane-o:before {
+	content: ""; }
+  
+  .fa-history:before {
+	content: ""; }
+  
+  .fa-circle-thin:before {
+	content: ""; }
+  
+  .fa-header:before {
+	content: ""; }
+  
+  .fa-paragraph:before {
+	content: ""; }
+  
+  .fa-sliders:before {
+	content: ""; }
+  
+  .fa-share-alt:before {
+	content: ""; }
+  
+  .fa-share-alt-square:before {
+	content: ""; }
+  
+  .fa-bomb:before {
+	content: ""; }
+  
+  .fa-soccer-ball-o:before,
+  .fa-futbol-o:before {
+	content: ""; }
+  
+  .fa-tty:before {
+	content: ""; }
+  
+  .fa-binoculars:before {
+	content: ""; }
+  
+  .fa-plug:before {
+	content: ""; }
+  
+  .fa-slideshare:before {
+	content: ""; }
+  
+  .fa-twitch:before {
+	content: ""; }
+  
+  .fa-yelp:before {
+	content: ""; }
+  
+  .fa-newspaper-o:before {
+	content: ""; }
+  
+  .fa-wifi:before {
+	content: ""; }
+  
+  .fa-calculator:before {
+	content: ""; }
+  
+  .fa-paypal:before {
+	content: ""; }
+  
+  .fa-google-wallet:before {
+	content: ""; }
+  
+  .fa-cc-visa:before {
+	content: ""; }
+  
+  .fa-cc-mastercard:before {
+	content: ""; }
+  
+  .fa-cc-discover:before {
+	content: ""; }
+  
+  .fa-cc-amex:before {
+	content: ""; }
+  
+  .fa-cc-paypal:before {
+	content: ""; }
+  
+  .fa-cc-stripe:before {
+	content: ""; }
+  
+  .fa-bell-slash:before {
+	content: ""; }
+  
+  .fa-bell-slash-o:before {
+	content: ""; }
+  
+  .fa-trash:before {
+	content: ""; }
+  
+  .fa-copyright:before {
+	content: ""; }
+  
+  .fa-at:before {
+	content: ""; }
+  
+  .fa-eyedropper:before {
+	content: ""; }
+  
+  .fa-paint-brush:before {
+	content: ""; }
+  
+  .fa-birthday-cake:before {
+	content: ""; }
+  
+  .fa-area-chart:before {
+	content: ""; }
+  
+  .fa-pie-chart:before {
+	content: ""; }
+  
+  .fa-line-chart:before {
+	content: ""; }
+  
+  .fa-lastfm:before {
+	content: ""; }
+  
+  .fa-lastfm-square:before {
+	content: ""; }
+  
+  .fa-toggle-off:before {
+	content: ""; }
+  
+  .fa-toggle-on:before {
+	content: ""; }
+  
+  .fa-bicycle:before {
+	content: ""; }
+  
+  .fa-bus:before {
+	content: ""; }
+  
+  .fa-ioxhost:before {
+	content: ""; }
+  
+  .fa-angellist:before {
+	content: ""; }
+  
+  .fa-cc:before {
+	content: ""; }
+  
+  .fa-shekel:before,
+  .fa-sheqel:before,
+  .fa-ils:before {
+	content: ""; }
+  
+  .fa-meanpath:before {
+	content: ""; }
+  
+  .fa-buysellads:before {
+	content: ""; }
+  
+  .fa-connectdevelop:before {
+	content: ""; }
+  
+  .fa-dashcube:before {
+	content: ""; }
+  
+  .fa-forumbee:before {
+	content: ""; }
+  
+  .fa-leanpub:before {
+	content: ""; }
+  
+  .fa-sellsy:before {
+	content: ""; }
+  
+  .fa-shirtsinbulk:before {
+	content: ""; }
+  
+  .fa-simplybuilt:before {
+	content: ""; }
+  
+  .fa-skyatlas:before {
+	content: ""; }
+  
+  .fa-cart-plus:before {
+	content: ""; }
+  
+  .fa-cart-arrow-down:before {
+	content: ""; }
+  
+  .fa-diamond:before {
+	content: ""; }
+  
+  .fa-ship:before {
+	content: ""; }
+  
+  .fa-user-secret:before {
+	content: ""; }
+  
+  .fa-motorcycle:before {
+	content: ""; }
+  
+  .fa-street-view:before {
+	content: ""; }
+  
+  .fa-heartbeat:before {
+	content: ""; }
+  
+  .fa-venus:before {
+	content: ""; }
+  
+  .fa-mars:before {
+	content: ""; }
+  
+  .fa-mercury:before {
+	content: ""; }
+  
+  .fa-intersex:before,
+  .fa-transgender:before {
+	content: ""; }
+  
+  .fa-transgender-alt:before {
+	content: ""; }
+  
+  .fa-venus-double:before {
+	content: ""; }
+  
+  .fa-mars-double:before {
+	content: ""; }
+  
+  .fa-venus-mars:before {
+	content: ""; }
+  
+  .fa-mars-stroke:before {
+	content: ""; }
+  
+  .fa-mars-stroke-v:before {
+	content: ""; }
+  
+  .fa-mars-stroke-h:before {
+	content: ""; }
+  
+  .fa-neuter:before {
+	content: ""; }
+  
+  .fa-genderless:before {
+	content: ""; }
+  
+  .fa-facebook-official:before {
+	content: ""; }
+  
+  .fa-pinterest-p:before {
+	content: ""; }
+  
+  .fa-whatsapp:before {
+	content: ""; }
+  
+  .fa-server:before {
+	content: ""; }
+  
+  .fa-user-plus:before {
+	content: ""; }
+  
+  .fa-user-times:before {
+	content: ""; }
+  
+  .fa-hotel:before,
+  .fa-bed:before {
+	content: ""; }
+  
+  .fa-viacoin:before {
+	content: ""; }
+  
+  .fa-train:before {
+	content: ""; }
+  
+  .fa-subway:before {
+	content: ""; }
+  
+  .fa-medium:before {
+	content: ""; }
+  
+  .fa-yc:before,
+  .fa-y-combinator:before {
+	content: ""; }
+  
+  .fa-optin-monster:before {
+	content: ""; }
+  
+  .fa-opencart:before {
+	content: ""; }
+  
+  .fa-expeditedssl:before {
+	content: ""; }
+  
+  .fa-battery-4:before,
+  .fa-battery-full:before {
+	content: ""; }
+  
+  .fa-battery-3:before,
+  .fa-battery-three-quarters:before {
+	content: ""; }
+  
+  .fa-battery-2:before,
+  .fa-battery-half:before {
+	content: ""; }
+  
+  .fa-battery-1:before,
+  .fa-battery-quarter:before {
+	content: ""; }
+  
+  .fa-battery-0:before,
+  .fa-battery-empty:before {
+	content: ""; }
+  
+  .fa-mouse-pointer:before {
+	content: ""; }
+  
+  .fa-i-cursor:before {
+	content: ""; }
+  
+  .fa-object-group:before {
+	content: ""; }
+  
+  .fa-object-ungroup:before {
+	content: ""; }
+  
+  .fa-sticky-note:before {
+	content: ""; }
+  
+  .fa-sticky-note-o:before {
+	content: ""; }
+  
+  .fa-cc-jcb:before {
+	content: ""; }
+  
+  .fa-cc-diners-club:before {
+	content: ""; }
+  
+  .fa-clone:before {
+	content: ""; }
+  
+  .fa-balance-scale:before {
+	content: ""; }
+  
+  .fa-hourglass-o:before {
+	content: ""; }
+  
+  .fa-hourglass-1:before,
+  .fa-hourglass-start:before {
+	content: ""; }
+  
+  .fa-hourglass-2:before,
+  .fa-hourglass-half:before {
+	content: ""; }
+  
+  .fa-hourglass-3:before,
+  .fa-hourglass-end:before {
+	content: ""; }
+  
+  .fa-hourglass:before {
+	content: ""; }
+  
+  .fa-hand-grab-o:before,
+  .fa-hand-rock-o:before {
+	content: ""; }
+  
+  .fa-hand-stop-o:before,
+  .fa-hand-paper-o:before {
+	content: ""; }
+  
+  .fa-hand-scissors-o:before {
+	content: ""; }
+  
+  .fa-hand-lizard-o:before {
+	content: ""; }
+  
+  .fa-hand-spock-o:before {
+	content: ""; }
+  
+  .fa-hand-pointer-o:before {
+	content: ""; }
+  
+  .fa-hand-peace-o:before {
+	content: ""; }
+  
+  .fa-trademark:before {
+	content: ""; }
+  
+  .fa-registered:before {
+	content: ""; }
+  
+  .fa-creative-commons:before {
+	content: ""; }
+  
+  .fa-gg:before {
+	content: ""; }
+  
+  .fa-gg-circle:before {
+	content: ""; }
+  
+  .fa-tripadvisor:before {
+	content: ""; }
+  
+  .fa-odnoklassniki:before {
+	content: ""; }
+  
+  .fa-odnoklassniki-square:before {
+	content: ""; }
+  
+  .fa-get-pocket:before {
+	content: ""; }
+  
+  .fa-wikipedia-w:before {
+	content: ""; }
+  
+  .fa-safari:before {
+	content: ""; }
+  
+  .fa-chrome:before {
+	content: ""; }
+  
+  .fa-firefox:before {
+	content: ""; }
+  
+  .fa-opera:before {
+	content: ""; }
+  
+  .fa-internet-explorer:before {
+	content: ""; }
+  
+  .fa-tv:before,
+  .fa-television:before {
+	content: ""; }
+  
+  .fa-contao:before {
+	content: ""; }
+  
+  .fa-500px:before {
+	content: ""; }
+  
+  .fa-amazon:before {
+	content: ""; }
+  
+  .fa-calendar-plus-o:before {
+	content: ""; }
+  
+  .fa-calendar-minus-o:before {
+	content: ""; }
+  
+  .fa-calendar-times-o:before {
+	content: ""; }
+  
+  .fa-calendar-check-o:before {
+	content: ""; }
+  
+  .fa-industry:before {
+	content: ""; }
+  
+  .fa-map-pin:before {
+	content: ""; }
+  
+  .fa-map-signs:before {
+	content: ""; }
+  
+  .fa-map-o:before {
+	content: ""; }
+  
+  .fa-map:before {
+	content: ""; }
+  
+  .fa-commenting:before {
+	content: ""; }
+  
+  .fa-commenting-o:before {
+	content: ""; }
+  
+  .fa-houzz:before {
+	content: ""; }
+  
+  .fa-vimeo:before {
+	content: ""; }
+  
+  .fa-black-tie:before {
+	content: ""; }
+  
+  .fa-fonticons:before {
+	content: ""; }
+  
+  .fa-reddit-alien:before {
+	content: ""; }
+  
+  .fa-edge:before {
+	content: ""; }
+  
+  .fa-credit-card-alt:before {
+	content: ""; }
+  
+  .fa-codiepie:before {
+	content: ""; }
+  
+  .fa-modx:before {
+	content: ""; }
+  
+  .fa-fort-awesome:before {
+	content: ""; }
+  
+  .fa-usb:before {
+	content: ""; }
+  
+  .fa-product-hunt:before {
+	content: ""; }
+  
+  .fa-mixcloud:before {
+	content: ""; }
+  
+  .fa-scribd:before {
+	content: ""; }
+  
+  .fa-pause-circle:before {
+	content: ""; }
+  
+  .fa-pause-circle-o:before {
+	content: ""; }
+  
+  .fa-stop-circle:before {
+	content: ""; }
+  
+  .fa-stop-circle-o:before {
+	content: ""; }
+  
+  .fa-shopping-bag:before {
+	content: ""; }
+  
+  .fa-shopping-basket:before {
+	content: ""; }
+  
+  .fa-hashtag:before {
+	content: ""; }
+  
+  .fa-bluetooth:before {
+	content: ""; }
+  
+  .fa-bluetooth-b:before {
+	content: ""; }
+  
+  .fa-percent:before {
+	content: ""; }
+  
