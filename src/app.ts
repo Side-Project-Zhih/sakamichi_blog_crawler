@@ -144,20 +144,21 @@ async function main() {
 
       fromDate = fromDate as string;
 
-      const blogs = await group.getBlogs(memberId, {
+      const {blogs, total} = await group.getBlogs(memberId, {
         count,
         timeStatus,
         fromDate,
       });
 
-      if (blogs.length === 0) {
+      if (total === 0) {
         console.log(`${member.name}'s blogs have already updated to latest `);
         continue;
       }
-      console.log(`Blog counts: ${blogs.length}`);
+
+      console.log(`Blog counts: ${total}`);
 
       //store content in db
-      await db.bulkInsertBlog(memberId, groupName, blogs);
+      await db.bulkUpsertBlog(memberId, groupName, blogs);
 
       //downloadImages
       for (const blog of blogs) {

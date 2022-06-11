@@ -1,4 +1,4 @@
-import { IgroupFactory, blog, image } from "./IGroupFactory";
+import { IgroupFactory, blog, image, blogInfo } from "./IGroupFactory";
 import { NogiApi } from "../api/NogiApi";
 
 import axios, { Axios, AxiosResponse } from "axios";
@@ -22,52 +22,90 @@ class NogiFactory implements IgroupFactory {
       fromDate,
       timeStatus,
     }: { count: string; fromDate: string; timeStatus: string }
-  ): Promise<blog[]> {
-    const api = this.api.GET_BLOGS_API(memberId, {
-      count,
-      fromDate,
-      timeStatus,
-      mode: "B",
-    });
-    const res: AxiosResponse = await axios.get(api);
-    const data: { blog: responseBlog[] } = res.data;
-    const blogs = data.blog;
-    const output = [];
+  ): Promise<blogInfo> {
+    const limit: number = 200;
+    const round = Math.ceil(+count / limit);
+    const output: blog[] = [];
+    let lastBlogDate: string = fromDate;
+    let total: number = 0;
 
-    for (const blog of blogs) {
-      const { title, content, creator } = blog;
-      const dir = `${this.groupName}/${creator}`;
-      const date = blog.pubdate.replace(/[/: ]/g, "");
+    for (let i = 0; i < round; i++) {
+      const api = this.api.GET_BLOGS_API(memberId, {
+        count: "" + limit,
+        fromDate: lastBlogDate,
+        timeStatus,
+        mode: "B",
+      });
 
-      const document = new JSDOM(content).window.document;
-      const picsElem = document.querySelectorAll("img");
-      const pics: any[] = [];
-      picsElem.forEach((item) => pics.push(item));
+      const res: AxiosResponse = await axios.get(api);
+      const data: { blog: responseBlog[] } = res.data;
+      const blogs = data.blog;
 
-      const images: image[] = [];
+      if (blogs.length === 0) {
+        break;
+      }
 
-      for (let i = 0; i < pics.length; i++) {
-        const pic = pics[i];
-        const filename = `${date}_image_${i}.jpg`;
-        const src = pic.src;
-        pic.src = `/${dir}/${filename}`;
-        images.push({
-          filename,
-          src,
-          dir,
+      for (const blog of blogs) {
+        const { title, content, creator } = blog;
+        const dir = `${this.groupName}/${creator}`;
+        const date = blog.pubdate.replace(/[/: ]/g, "");
+
+        const document = new JSDOM(content).window.document;
+        const picsElem = document.querySelectorAll("img");
+        const pics: any[] = [];
+        picsElem.forEach((item) => pics.push(item));
+
+        const images: image[] = [];
+
+        for (let i = 0; i < pics.length; i++) {
+          const pic = pics[i];
+          const filename = `${date}_image_${i}.jpg`;
+          const src = pic.src;
+          pic.src = `/${dir}/${filename}`;
+          images.push({
+            filename,
+            src,
+            dir,
+          });
+        }
+
+        output.push({
+          title,
+          date,
+          content: document.body.outerHTML,
+          images: images,
         });
       }
 
-      output.push({
-        title,
-        date,
-        content: document.body.outerHTML,
-        images: images,
-      });
+      //handle total blogs
+      if (i === 0) {
+        total = blogs.length;
+      } else {
+        total += blogs.length - 1;
+      }
+
+      //handle last blog date
+      let lastBlogDateIndex: number = 0;
+      switch (timeStatus) {
+        case "old": {
+          lastBlogDateIndex = blogs.length - 1;
+          break;
+        }
+        case "new": {
+          lastBlogDateIndex = 0;
+          break;
+        }
+      }
+
+      lastBlogDate = blogs[lastBlogDateIndex].pubdate.replace(/[/: ]/g, "");
     }
 
-    return output;
+    return {
+      blogs: output,
+      total,
+    };
   }
+
   async getBlogsTotalCount(memberId: string, fromDate: string) {
     const api = this.api.GET_BLOGS_API(memberId, {
       count: "1",

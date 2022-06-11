@@ -16,7 +16,7 @@ interface Idb {
     members: Array<string>,
     groupName: string
   ): Promise<Array<object>>;
-  bulkInsertBlog(
+  bulkUpsertBlog(
     memberId: string,
     groupName: string,
     dataList: Array<object>
@@ -56,7 +56,7 @@ class Mongodb implements Idb {
     return data;
   }
 
-  async bulkInsertBlog(
+  async bulkUpsertBlog(
     memberId: string,
     groupName: string,
     dataList: Array<blog>
