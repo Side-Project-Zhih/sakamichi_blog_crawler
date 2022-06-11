@@ -129,6 +129,11 @@ class Mongodb implements Idb {
           "https://www.nogizaka46.com/s/n46/api/json/diary?cd=MEMBER&mode=C";
         break;
       }
+      case "hinata": {
+        api =
+          "https://www.hinatazaka46.com/s/h46app/api/json/diary?cd=member&mode=C";
+        break;
+      }
     }
     api = api as string;
 

@@ -6,6 +6,7 @@ import utc from "dayjs/plugin/utc";
 // import mongodb, { MongoClient, Db, ObjectId } from "mongodb";
 import { SakuraFactory } from "./groupFactory/SakuraFactory";
 import { NogiFactory } from "./groupFactory/NogiFactory";
+import { HinataFactory } from "./groupFactory/HinataFactory";
 import { Mongodb, MongoMember } from "./util/database";
 const { downloadImage } = require("./util/download");
 
@@ -14,7 +15,7 @@ type member = MongoMember;
 const COMMANDS = {
   group: {
     alias: "g",
-    describe: "chose group sakura / nogi ex: -g sakura",
+    describe: "chose group sakura / nogi / hinata ex: -g sakura",
     string: true,
   },
   members: {
@@ -34,6 +35,11 @@ const COMMANDS = {
     describe: "show nogizaka member id",
     boolean: true,
   },
+  showHinataMember: {
+    alias: "h",
+    describe: "show hinatazaka member id",
+    boolean: true,
+  },
 };
 
 const ERROR_MESSAGE = {
@@ -46,6 +52,7 @@ const args = yargs.options(COMMANDS).help().argv as {
   members: Array<string>;
   showSakuraMember: boolean;
   showNogiMember: boolean;
+  showHinataMember: boolean;
 };
 
 dayjs.extend(utc);
@@ -78,7 +85,15 @@ async function main() {
       const group: string = "sakura";
       await db.updateInitMemberList(group);
       const list = await db.getMemberList(group);
-      
+
+      return console.log(list);
+    }
+
+    if (args.showHinataMember) {
+      const group: string = "hinata";
+      await db.updateInitMemberList(group);
+      const list = await db.getMemberList(group);
+
       return console.log(list);
     }
     //--------------------------------
@@ -86,7 +101,7 @@ async function main() {
     const groupName = args.group;
     await db.updateInitMemberList(groupName);
 
-    let factory: SakuraFactory | NogiFactory | undefined;
+    let factory: SakuraFactory | NogiFactory | HinataFactory | undefined;
     switch (groupName) {
       case "sakura": {
         factory = new SakuraFactory();
@@ -94,6 +109,10 @@ async function main() {
       }
       case "nogi": {
         factory = new NogiFactory();
+        break;
+      }
+      case "hinata": {
+        factory = new HinataFactory();
         break;
       }
       default: {
@@ -104,6 +123,7 @@ async function main() {
     if (factory === undefined) {
       throw new Error(ERROR_MESSAGE.wrongGroupName);
     }
+    
     const group = factory.newInstance();
     const members = args.members;
     for (const member of members) {
@@ -144,7 +164,7 @@ async function main() {
 
       fromDate = fromDate as string;
 
-      const {blogs, total} = await group.getBlogs(memberId, {
+      const { blogs, total } = await group.getBlogs(memberId, {
         count,
         timeStatus,
         fromDate,
