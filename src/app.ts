@@ -127,7 +127,7 @@ async function main() {
     const group = factory.newInstance();
     const members = args.members;
     for (const member of members) {
-      if (!+member) {
+      if (typeof +member !== "number") {
         throw new Error(ERROR_MESSAGE.inputAllNumber);
       }
     }
