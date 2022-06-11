@@ -3,7 +3,7 @@
 並有簡易server讓你瀏覽blog  
 
 但目前只支援 櫻坂跟乃木坂 因為我偏心....
-
+我補了日向了......
 
 ## 安裝前置
 1. 請先安裝mongoDB 跟 mongDB 的GUI studio 3T
