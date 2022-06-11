@@ -88,6 +88,7 @@ router.get("/:member_id/:year/:month/blogs/:blog_id", async (req, res) => {
   //inject data
 
   return res.render("blog", {
+    webTitle:`SAKURAZA 46 ${targetMember.name}`,
     blogs,
     members: memberList,
     group,
@@ -159,6 +160,7 @@ router.get("/:member_id/:year/:month/blogs", async (req, res) => {
   //inject data
 
   res.render("blog", {
+    webTitle: `SAKURAZA 46`,
     blogs,
     members: memberList,
     group,

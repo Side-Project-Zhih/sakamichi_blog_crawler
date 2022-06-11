@@ -5,18 +5,19 @@ const { engine } = require("express-handlebars");
 const path = require("path");
 const dayjs = require("dayjs");
 
-const sakuraRouter = require("./routes/sakura")
+const sakuraRouter = require("./routes/sakura");
 const nogiRouter = require("./routes/nogi");
+const hinataRouter = require("./routes/hinata");
 
 dayjs().format();
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(process.cwd(), 'public')));
+app.use(express.static(path.join(process.cwd(), "public")));
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
-app.set("views", path.join(__dirname, 'views'));
+app.set("views", path.join(__dirname, "views"));
 
 app.use(async (req, res, next) => {
   const client = new MongoClient(
@@ -62,7 +63,7 @@ app.post("/query", async (req, res) => {
 
 app.use("/sakura", sakuraRouter);
 app.use("/nogi", nogiRouter);
-
+app.use("/hinata", hinataRouter);
 
 app.get("/", async (req, res) => {
   const nogi = await req.db
@@ -86,16 +87,37 @@ app.get("/", async (req, res) => {
     })
     .sort({ memberId: 1 })
     .toArray();
+
+  const hinata = await req.db
+    .collection("Member")
+    .find({
+      group: "hinata",
+      date: {
+        $exists: true,
+      },
+    })
+    .sort({ memberId: 1 })
+    .toArray();
+
   const memberList = {
     sakura,
     nogi,
+    hinata
   };
 
+  const now = dayjs(new Date()).format('YYYY-MM')
+
   return res.render("index", {
+    webTitle: "BLOG SELECTOR",
     isIndex: true,
     memberList,
     jsonMemberList: JSON.stringify(memberList),
+    now,
   });
 });
 
-app.listen(3000, () => console.log("Reader is ready. Please input http://localhost:3000/ at browser to surfer blogs"));
+app.listen(3000, () =>
+  console.log(
+    "Reader is ready. Please input http://localhost:3000/ at browser to surfer blogs"
+  )
+);

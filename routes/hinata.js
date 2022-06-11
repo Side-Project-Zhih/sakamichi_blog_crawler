@@ -3,10 +3,10 @@ const dayjs = require("dayjs");
 const { ObjectId } = require("mongodb");
 
 dayjs().format();
-router = express.Router();
+router = express.Router({ mergeParams: true });
 
 router.use(async (req, res, next) => {
-  const group = "nogi";
+  const group = "hinata";
 
   req.group = group;
 
@@ -34,18 +34,7 @@ router.get("/:member_id/:year/:month/blogs/:blog_id", async (req, res) => {
 
   const { group } = req;
 
-  const memberList = await req.db
-    .collection("Member")
-    .find({
-      group,
-      date: {
-        $exists: true,
-      },
-    })
-    .project({ _id: 0, name: 1, memberId: 1 })
-    .sort({ memberId: 1 })
-    .toArray();
-
+  const memberList = req.memberList;
   let targetMember;
   for (const member of memberList) {
     if (member.memberId === member_id) {
@@ -76,7 +65,7 @@ router.get("/:member_id/:year/:month/blogs/:blog_id", async (req, res) => {
     const id = blog._id.toString();
     const dateObject = dayjs(blog.date, "YYYYMMDDHHmmss");
     const date = dateObject.format("YYYY/MM/DD");
-    const url = `http://localhost:3000/${group}/${member_id}/${year}/${month}/blogs/${id}`;
+    const url = `http://localhost:3000/hinata/${member_id}/${year}/${month}/blogs/${id}`;
     return {
       url,
       title,
@@ -99,7 +88,7 @@ router.get("/:member_id/:year/:month/blogs/:blog_id", async (req, res) => {
   //inject data
 
   return res.render("blog", {
-    webTitle: `NOGIZAKA 46 ${targetMember.name}`,
+    webTitle: `HINATA 46 ${targetMember.name}`,
     blogs,
     members: memberList,
     group,
@@ -116,24 +105,14 @@ router.get("/:member_id/:year/:month/blogs/:blog_id", async (req, res) => {
 });
 
 router.get("/:member_id/:year/:month/blogs", async (req, res) => {
-  const { member_id, blog_id, year, month } = req.params;
+  const { member_id, year, month } = req.params;
   const dateObject = dayjs(`${year}${month}`, "YYYYMM");
   const startDate = dateObject.format("YYYYMM01000000");
   const endDate = dateObject.add(1, "M").format("YYYYMM01000000");
 
   const { group } = req;
 
-  const memberList = await req.db
-    .collection("Member")
-    .find({
-      group,
-      date: {
-        $exists: true,
-      },
-    })
-    .project({ _id: 0, name: 1, memberId: 1 })
-    .sort({ memberId: 1 })
-    .toArray();
+  const memberList = req.memberList;
 
   let targetMember;
   for (const member of memberList) {
@@ -165,7 +144,7 @@ router.get("/:member_id/:year/:month/blogs", async (req, res) => {
     const id = blog._id.toString();
     const dateObject = dayjs(blog.date, "YYYYMMDDHHmmss");
     const date = dateObject.format("YYYY/MM/DD");
-    const url = `http://localhost:3000/${group}/${member_id}/${year}/${month}/blogs/${id}`;
+    const url = `http://localhost:3000/hinata/${member_id}/${year}/${month}/blogs/${id}`;
     return {
       url,
       title,
@@ -181,7 +160,7 @@ router.get("/:member_id/:year/:month/blogs", async (req, res) => {
   //inject data
 
   res.render("blog", {
-    webTitle: `NOGIZAKA 46`,
+    webTitle: `HINATA 46`,
     blogs,
     members: memberList,
     group,
