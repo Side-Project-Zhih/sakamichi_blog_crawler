@@ -84,7 +84,12 @@ class SakuraFactory implements IgroupFactory {
         total += blogs.length - 1;
       }
 
-      //handle last blog date
+      // don't do unnecessary request
+      if(blogs.length < limit) {
+        break
+      }
+
+      //handle last blog date index
       let lastBlogDateIndex: number = 0;
       switch (timeStatus) {
         case "old": {

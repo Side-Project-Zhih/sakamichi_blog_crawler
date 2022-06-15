@@ -1,37 +1,27 @@
+import { DbStoreTemplate } from "./DbStoreTemplate";
 import mongodb, { MongoClient, Db, ObjectId } from "mongodb";
-import { blog } from "../groupFactory/IGroupFactory";
 import axios, { AxiosResponse } from "axios";
+import { blog } from "../groupFactory/IGroupFactory";
 
-type MongoMember = {
-  _id: ObjectId;
-  memberId: string;
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+dayjs.extend(utc);
+
+const DATE_FORMAT = "YYYYMMDD000000";
+
+type queryCriteria = {
   group: string;
-  name: string;
-  date: string | undefined;
+  memberId: {
+    $in: Array<string>;
+  };
+  date?: object;
 };
 
-interface Idb {
-  connectClient(): Promise<void>;
-  querytMembers(
-    members: Array<string>,
-    groupName: string
-  ): Promise<Array<object>>;
-  bulkUpsertBlog(
-    memberId: string,
-    groupName: string,
-    dataList: Array<object>
-  ): Promise<void>;
-  updateMember(
-    memberId: string,
-    groupName: string,
-    data: object
-  ): Promise<void>;
-  updateInitMemberList(group: string): Promise<void>;
-  getMemberList(group: string): Promise<Array<object>>;
-}
-
-class Mongodb implements Idb {
-  constructor(private url: string, private dbName: string) {}
+class MongodbStoreCrawler extends DbStoreTemplate {
+  constructor(private url: string, private dbName: string) {
+    super();
+  }
+  
   private client = new MongoClient(this.url);
   public db: mongodb.Db | undefined;
   async connectClient() {
@@ -40,7 +30,13 @@ class Mongodb implements Idb {
     this.db = db;
   }
 
-  async querytMembers(members: Array<string>, groupName: string) {
+  async dbInit() {
+    await this.client.connect();
+    const db = this.client.db(this.dbName);
+    this.db = db;
+  }
+
+  async dbQuerytMembers(members: Array<string>, groupName: string) {
     if (this.db === undefined) {
       throw new Error();
     }
@@ -56,7 +52,7 @@ class Mongodb implements Idb {
     return data;
   }
 
-  async bulkUpsertBlog(
+  async dbBulkUpsertBlog(
     memberId: string,
     groupName: string,
     dataList: Array<blog>
@@ -88,7 +84,7 @@ class Mongodb implements Idb {
     }
   }
 
-  async updateMember(
+  async dbUpdateMember(
     memberId: string,
     groupName: string,
     data: { date: string }
@@ -114,7 +110,7 @@ class Mongodb implements Idb {
       console.log(error);
     }
   }
-  async updateInitMemberList(group: string) {
+  async dbUpdateInitMemberList(group: string) {
     if (typeof group !== "string" || this.db === undefined) {
       throw new Error();
     }
@@ -165,7 +161,7 @@ class Mongodb implements Idb {
     await this.db.collection("Member").bulkWrite(list);
   }
 
-  async getMemberList(group: string) {
+  async dbGetMemberList(group: string) {
     if (this.db === undefined) {
       throw new Error();
     }
@@ -182,9 +178,52 @@ class Mongodb implements Idb {
       })
       .sort({ memberId: 1 })
       .toArray();
-      
+
+    return data;
+  }
+
+  async dbGetMembersBlogs(
+    groupName: string,
+    members: Array<string>,
+    date?: string
+  ) {
+    if (this.db === undefined) {
+      throw new Error();
+    }
+
+    const dateObject = dayjs(`date`, "YYYYMM");
+    if (dateObject.isValid() === false) {
+      throw new Error();
+    }
+
+    let startDate: string | undefined = dateObject.format(DATE_FORMAT);
+    let endDate: string | undefined = dateObject.format(DATE_FORMAT);
+
+    const criteria: queryCriteria = {
+      group: groupName,
+      memberId: {
+        $in: members,
+      },
+    };
+
+    if (date) {
+      criteria.date = {
+        $gte: startDate,
+        $lt: endDate,
+      };
+    }
+
+    const data = (await this.db
+      .collection("Blog")
+      .find(criteria)
+      .project({
+        images: 1,
+        _id: 0,
+      })
+      .toArray()) as Array<blog>;
+
     return data;
   }
 }
 
-export { Mongodb, MongoMember };
+export { MongodbStoreCrawler };
