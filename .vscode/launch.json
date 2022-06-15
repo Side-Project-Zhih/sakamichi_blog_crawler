@@ -19,7 +19,24 @@
       "program": "${workspaceFolder}/src/app.ts",
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "args": ["-g", "sakura", "-m", "11"]
+      "args": [
+        "-g",
+        "sakura",
+        "-m",
+        "11",
+        "21",
+        "06",
+        "07",
+        "14",
+        "15",
+        "44",
+        "46",
+        "47",
+        "50",
+        "51",
+        "54",
+        "58"
+      ]
     },
     {
       "type": "pwa-node",
