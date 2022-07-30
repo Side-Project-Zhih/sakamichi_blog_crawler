@@ -46,7 +46,17 @@
       "program": "${workspaceFolder}/src/app.ts",
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "args": ["-g", "nogi", "-m", "264", "48008", "48006", "48018", "40007"]
+      "args": ["-g", "nogi", "-m", "36758", "48008", "48006", "48018", "40007"]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "blogCrawlerNogiImage",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/app.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "args": ["-g", "nogi", "-m", "36758","-d","202207"]
     },
     {
       "type": "pwa-node",

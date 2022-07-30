@@ -29,7 +29,9 @@ abstract class DbStoreTemplate {
     members: Array<string>
   ): Promise<void> {
     await this.dbInit();
+
     await mkdirp(`${process.cwd()}/public`);
+
     await this.dbUpdateInitMemberList(groupName);
 
     let factory: SakuraFactory | NogiFactory | HinataFactory | undefined;
@@ -62,11 +64,13 @@ abstract class DbStoreTemplate {
       }
     }
     // query member
+
     const memberList = (await this.dbQuerytMembers(
       members,
       groupName
     )) as Array<member>;
     let count = "1000";
+
     const now: string = dayjs
       .utc(new Date())
       .utcOffset(9)
@@ -111,6 +115,7 @@ abstract class DbStoreTemplate {
       console.log(`Blog counts: ${total}`);
 
       //store content in db
+
       await this.dbBulkUpsertBlog(memberId, groupName, blogs);
 
       //downloadImages
@@ -135,11 +140,15 @@ abstract class DbStoreTemplate {
 
   async getMemberList(group: string): Promise<void> {
     await mkdirp(`${process.cwd()}/public`);
+    // =================template=========================
+
     await this.dbInit();
 
     await this.dbUpdateInitMemberList(group);
 
     const list = await this.dbGetMemberList(group);
+
+    // ==========================================
 
     return console.log(list);
   }
@@ -155,10 +164,10 @@ abstract class DbStoreTemplate {
     const blogs = await this.dbGetMembersBlogs(groupName, members, date);
     for (const blog of blogs) {
       const images = blog.images;
-      const imageRunList = images.map(
-        async (image: image) => await downloadImage(image)
+
+      await Promise.allSettled(
+        images.map(async (image: image) => await downloadImage(image))
       );
-      await Promise.allSettled(imageRunList);
     }
   }
 
@@ -186,6 +195,4 @@ abstract class DbStoreTemplate {
   ): Promise<Array<blog>>;
 }
 
-
-
-export { DbStoreTemplate }; 
+export { DbStoreTemplate };

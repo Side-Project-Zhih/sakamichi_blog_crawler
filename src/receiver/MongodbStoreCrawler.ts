@@ -21,7 +21,7 @@ class MongodbStoreCrawler extends DbStoreTemplate {
   constructor(private url: string, private dbName: string) {
     super();
   }
-  
+
   private client = new MongoClient(this.url);
   public db: mongodb.Db | undefined;
   async connectClient() {
@@ -191,13 +191,15 @@ class MongodbStoreCrawler extends DbStoreTemplate {
       throw new Error();
     }
 
-    const dateObject = dayjs(`date`, "YYYYMM");
+    const dateObject = dayjs(date, "YYYYMM");
     if (dateObject.isValid() === false) {
       throw new Error();
     }
 
     let startDate: string | undefined = dateObject.format(DATE_FORMAT);
-    let endDate: string | undefined = dateObject.format(DATE_FORMAT);
+    let endDate: string | undefined = dateObject
+      .add(1, "month")
+      .format(DATE_FORMAT);
 
     const criteria: queryCriteria = {
       group: groupName,

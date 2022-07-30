@@ -86,7 +86,7 @@ async function main() {
 
       command = new CommandGetMemberList(receiver, group);
     }
-    //------------get back blog images--------------------
+    //------------XXX: get back blog images--------------------
     else if (args.group && args.members.length > 0 && args.date) {
       group = args.group;
       const { members, date } = args;
@@ -104,6 +104,7 @@ async function main() {
     }
 
     invoker.setCommand(command);
+
     return await invoker.execute();
   } catch (error) {
     console.error(error);
