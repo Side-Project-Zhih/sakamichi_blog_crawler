@@ -48,7 +48,7 @@ const ERROR_MESSAGE = {
 const args = yargs_1.default.options(COMMANDS).help().argv;
 async function main() {
     try {
-        const receiver = new MongodbStoreCrawler_1.MongodbStoreCrawler("mongodb://localhost:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000", "SakaBlog");
+        const receiver = new MongodbStoreCrawler_1.MongodbStoreCrawler("mongodb://0.0.0.0:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000", "SakaBlog");
         const invoker = new Invoker_1.Invoker();
         let group;
         let command;

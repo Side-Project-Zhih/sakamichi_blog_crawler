@@ -2,3 +2,7 @@ node_modules
 public/sakura
 public/nogi
 public/hinata
+*.exe
+*.bat
+dist/*
+.idea

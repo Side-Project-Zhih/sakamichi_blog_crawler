@@ -63,7 +63,7 @@ const args = yargs.options(COMMANDS).help().argv as {
 async function main() {
   try {
     const receiver = new MongodbStoreCrawler(
-      "mongodb://localhost:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000",
+      "mongodb://0.0.0.0:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000",
       "SakaBlog"
     );
     const invoker = new Invoker();

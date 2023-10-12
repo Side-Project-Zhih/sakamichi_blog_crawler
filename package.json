@@ -1,15 +1,14 @@
 {
-  "name": "blogReader",
+  "name": "blogCrawler",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js"
+    "start": "node ./dist/app.js"
   },
-  "bin": "./index.js",
+  "bin": "./dist/app.js",
   "pkg": {
-    "assets": "views/**/*",
     "targets": [
       "node16-win"
     ]
