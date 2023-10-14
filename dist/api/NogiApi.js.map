@@ -1,1 +1,1 @@
-{"version":3,"file":"NogiApi.js","sourceRoot":"","sources":["../../src/api/NogiApi.ts"],"names":[],"mappings":";;;AACA,MAAM,OAAO;IAAb;QACU,aAAQ,GAAW,iDAAiD,CAAC;IAiB/E,CAAC;IAhBC,aAAa,CACX,QAAgB,EAChB,EACE,KAAK,EACL,QAAQ,EACR,UAAU,EACV,IAAI,GAML;QAED,OAAO,GAAG,IAAI,CAAC,QAAQ,kBAAkB,IAAI,cAAc,QAAQ,WAAW,KAAK,aAAa,QAAQ,eAAe,UAAU,EAAE,CAAC;IACtI,CAAC;CACF;AAEQ,0BAAO"}
+{"version":3,"file":"NogiApi.js","sourceRoot":"","sources":["../../src/api/NogiApi.ts"],"names":[],"mappings":";;;AAEa,QAAA,OAAO,GAAe;IAC/B,KAAK,EAAE,MAAM;IACb,eAAe,EAAE,kEAAkE;IACnF,SAAS,EAAE,2DAA2D;CACzE,CAAC"}

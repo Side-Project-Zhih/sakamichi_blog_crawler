@@ -1,22 +1,7 @@
-import { Iapi } from "./IApi";
-class SakuraApi implements Iapi {
-  private _blogApi: string = "https://sakurazaka46.com/s/s46app/api/json/diary";
-  GET_BLOGS_API(
-    memberId: string,
-    {
-      count,
-      fromDate,
-      timeStatus,
-      mode,
-    }: {
-      count: string;
-      fromDate: string;
-      timeStatus: string;
-      mode: string;
-    }
-  ) {
-    return `${this._blogApi}?cd=blog&get=${mode}&member_id=${memberId}&getnum=${count}&fromdate=${fromDate}&timestatus=${timeStatus}`;
-  }
-}
+import {ApiSetting} from "../ApiCrontroller/SakamichiApiController";
 
-export { SakuraApi };
+export const SakuraApi: ApiSetting = {
+    group: "sakura",
+    GET_MEMBER_LIST: "https://sakurazaka46.com/s/s46app/api/json/diary?cd=blog&mode=C",
+    GET_BLOGS: "https://sakurazaka46.com/s/s46app/api/json/diary?cd=blog"
+};

@@ -1,118 +1,104 @@
 import yargs from "yargs";
+import MongoDatabase from "./database/MongoDatabase";
+import Crawler from "./Crawler";
+import NotEqualMeCrawler from "./NotEqualMeCrawler";
+import NotEqualMeApIController from "./ApiCrontroller/NotEqualMeApIController";
+import ApiController from "./ApiCrontroller/ApiController";
+import Downloader from "./Downloader";
+import * as dotenv from "dotenv";
+import {SakuraApi} from "./api/SakuraApi";
+import {HinataApi} from "./api/HinataApi";
+import SakamichiApiController, {ApiSetting} from "./ApiCrontroller/SakamichiApiController";
+import {NogiApi} from "./api/NogiApi";
 
-import {
-  CommandDownloadMultiMembersBlog,
-  CommandGetMemberList,
-  CommandGetBackBlogImages,
-  Command,
-} from "./command/command";
+const envPath = `${process.cwd()}/.env`;
+dotenv.config({path: envPath});
 
-import { Invoker } from "./invoker/Invoker";
-import { MongodbStoreCrawler } from "./receiver/MongodbStoreCrawler";
 
 const COMMANDS = {
-  group: {
-    alias: "g",
-    describe: "chose group sakura / nogi / hinata ex: -g sakura",
-    string: true,
-  },
-  members: {
-    alias: "m",
-    describe:
-      "input member id ex: -m 21, if you want to download  multiple members please input ex: -m 21 11",
-    array: true,
-    string: true,
-  },
-  showSakuraMember: {
-    alias: "s",
-    describe: "show sakurazaka member id",
-    boolean: true,
-  },
-  showNogiMember: {
-    alias: "n",
-    describe: "show nogizaka member id",
-    boolean: true,
-  },
-  showHinataMember: {
-    alias: "h",
-    describe: "show hinatazaka member id",
-    boolean: true,
-  },
-  date: {
-    alias: "d",
-    describe: "input spec date,format should be 'YYYYMM' ex: -d 202205",
-    string: true,
-  },
+    group: {
+        alias: "g",
+        describe: "chose group sakura / nogi / hinata ex: -g sakura",
+        string: true,
+    },
+    members: {
+        alias: "m",
+        describe:
+            "input member id ex: -m 21, if you want to download  multiple members please input ex: -m 21 11",
+        array: true,
+        string: true,
+    },
+    show: {
+        alias: "s",
+        describe: "show group memberIds",
+        string: true,
+    },
+    date: {
+        alias: "d",
+        describe: "input spec date,format should be 'YYYYMM' ex: -d 202205",
+        string: true,
+    },
 };
 
-const ERROR_MESSAGE = {
-  inputAllNumber: "Please input series number",
-  wrongGroupName: "Please input correct group name",
-  wrongParameter: "Please input correct parameter",
-};
 
 const args = yargs.options(COMMANDS).help().argv as {
-  group: string;
-  members: Array<string>;
-  showSakuraMember: boolean;
-  showNogiMember: boolean;
-  showHinataMember: boolean;
-  date: string;
+    group: string;
+    members: Array<string>;
+    show: string;
+    date: string;
 };
 
+const CRAWL_MAP: { [group: string]: typeof Crawler } = {
+    "notEqualMe": NotEqualMeCrawler,
+    "sakura": Crawler,
+    "nogi": Crawler,
+    "hinata": Crawler
+};
+const API_CONTROLLER_MAP: { [group: string]: typeof ApiController } = {
+// @ts-ignore
+    "notEqualMe": NotEqualMeApIController,
+// @ts-ignore
+    "sakura": SakamichiApiController,
+// @ts-ignore
+    "nogi": SakamichiApiController,
+// @ts-ignore
+    "hinata": SakamichiApiController
+};
+
+const API_MAP: { [group: string]: ApiSetting } = {
+    sakura: SakuraApi,
+    nogi: NogiApi,
+    hinata: HinataApi
+};
+
+
+const DB_HOST = process.env.DB_HOST || 'localhost';
+
 async function main() {
-  try {
-    const receiver = new MongodbStoreCrawler(
-      "mongodb://0.0.0.0:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000",
-      "SakaBlog"
+    const mongodbStore = new MongoDatabase(
+        `mongodb://${DB_HOST}:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000`,
+        "SakaBlog"
     );
-    const invoker = new Invoker();
-
-    let group: string | undefined;
-    let command: Command | undefined;
-    //-------------get  member list-------------------
-    if (args.showNogiMember || args.showSakuraMember || args.showHinataMember) {
-      if (args.showNogiMember) {
-        group = "nogi";
-      } else if (args.showSakuraMember) {
-        group = "sakura";
-      } else if (args.showHinataMember) {
-        group = "hinata";
-      }
-
-      if (!group) {
-        throw new Error(ERROR_MESSAGE.wrongGroupName);
-      }
-
-      command = new CommandGetMemberList(receiver, group);
+    const group = args.group || args.show;
+    if (group === undefined) {
+        throw new Error("Please input group name");
     }
-    //------------XXX: get back blog images--------------------
-    else if (args.group && args.members.length > 0 && args.date) {
-      group = args.group;
-      const { members, date } = args;
+    const api = API_MAP[group];
+    const apiController = new API_CONTROLLER_MAP[group](api);
+    const crawlerClass = CRAWL_MAP[group];
+    const downloader = new Downloader();
+    const crawler = new crawlerClass(apiController, mongodbStore, downloader);
 
-      command = new CommandGetBackBlogImages(receiver, group, members, date);
-    }
-    //------------get members blogs-------------------
-    else if (args.group && args.members.length > 0) {
-      group = args.group;
-      const { members } = args;
-
-      command = new CommandDownloadMultiMembersBlog(receiver, group, members);
-    } else {
-      throw new Error(ERROR_MESSAGE.wrongParameter);
+    if (args.show) {
+        await crawler.getMemberList();
+        return;
     }
 
-    invoker.setCommand(command);
-
-    return await invoker.execute();
-  } catch (error) {
-    console.error(error);
-    throw new Error(JSON.stringify(error));
-  }
+    if (args.members?.length !== 0 && args.group) {
+        const memberIds = args.members;
+        await crawler.execute(memberIds);
+        return;
+    }
 }
 
-main().then(() => {
-  console.log("DONE");
-  process.exit();
-});
+main().catch(console.error).finally(() => process.exit(0));

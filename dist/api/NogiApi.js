@@ -1,13 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NogiApi = void 0;
-class NogiApi {
-    constructor() {
-        this._blogApi = "https://www.nogizaka46.com/s/n46/api/json/diary";
-    }
-    GET_BLOGS_API(memberId, { count, fromDate, timeStatus, mode, }) {
-        return `${this._blogApi}?cd=MEMBER&get=${mode}&member_id=${memberId}&getnum=${count}&fromdate=${fromDate}&timestatus=${timeStatus}`;
-    }
-}
-exports.NogiApi = NogiApi;
+exports.NogiApi = {
+    group: "nogi",
+    GET_MEMBER_LIST: "https://www.nogizaka46.com/s/n46/api/json/diary?cd=MEMBER&mode=C",
+    GET_BLOGS: "https://www.nogizaka46.com/s/n46/api/json/diary?cd=MEMBER"
+};
 //# sourceMappingURL=NogiApi.js.map

@@ -2,6 +2,7 @@ node_modules
 public/sakura
 public/nogi
 public/hinata
+public/notEqualMe
 *.exe
 *.bat
 dist/*
