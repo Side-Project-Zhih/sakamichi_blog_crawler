@@ -6,3 +6,4 @@ public/hinata
 *.bat
 dist/*
 .idea
+.env

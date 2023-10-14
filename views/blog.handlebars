@@ -57,10 +57,10 @@
 
           <div class="brog-newentry-r">
             <div class="com-title-ej">
-              <a href="http://localhost:3000/">
+              <a href="/">
               <p class="part-eigo wf-a" style="margin-bottom: 30px;">BLOG SELECTOR</p>
               </a>
-              <form action="http://localhost:3000/query" method="post" class="d-flex flex-column"   style="margin-bottom: 50px;">
+              <form action="/query" method="post" class="d-flex flex-column"   style="margin-bottom: 50px;">
               <select name="memberId"class="mb-4">
                     {{#each members}}
                       <option  {{#if this.target}} selected{{/if}} value={{this.memberId}} >{{this.name}}</option>
