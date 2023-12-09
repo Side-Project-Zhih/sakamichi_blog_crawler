@@ -5,6 +5,10 @@
 但目前只支援 櫻坂跟乃木坂 因為我偏心....
 我補了日向了......
 
+## donate me 請我喝咖啡
++ [donate link](https://www.buymeacoffee.com/zhihdd)
+-- -
+
 ## 安裝前置
 1. 請先安裝mongoDB 跟 mongDB 的GUI studio 3T
 2. 建立local端地連線
@@ -18,7 +22,7 @@
 ## 使用方式
 ```
 下載blog
-// compile file
+// compile file  
 tsc --project tsconfig.json
 // check member number
 node dst/app.js -s sakura
