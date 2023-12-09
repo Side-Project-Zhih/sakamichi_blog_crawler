@@ -79,8 +79,8 @@ export default class Crawler {
     public async getMemberList() {
         const group = this.apiController.group;
         await mkdirp(`${process.cwd()}/public`);
-        const isMemberListEmpty = await this.db.checkMemberList(group);
-        if (isMemberListEmpty) {
+        const isMemberListExist = await this.db.checkMemberList(group);
+        if (!isMemberListExist) {
             await this.upsertMemberList();
         }
         const list = await this.db.getMemberList(group);
