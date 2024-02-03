@@ -79,9 +79,11 @@ export default class Crawler {
     public async getMemberList() {
         const group = this.apiController.group;
         await mkdirp(`${process.cwd()}/public`);
-        const isMemberListExist = await this.db.checkMemberList(group);
-        if (!isMemberListExist) {
+        try {
             await this.upsertMemberList();
+        } catch (e) {
+            console.log(new Error("failed to upsert member list"));
+            console.log(e);
         }
         const list = await this.db.getMemberList(group);
         console.log(list);
@@ -104,7 +106,7 @@ export default class Crawler {
     }
 
     protected getNewLastUpdate(rawBlogs: RawBlog[], now: string) {
-        return now
+        return now;
     }
 
     protected parseDate(rawBlog: RawBlog) {
